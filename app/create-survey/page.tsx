@@ -3,7 +3,11 @@ import { BsChevronCompactLeft, BsChevronCompactRight } from "react-icons/bs";
 import QuestionsSlide from "./components/QuestionSlide";
 import { QuestionType, store } from "./store";
 
+import "./style.css";
+import { useSnapshot } from "valtio";
+
 export default function Page() {
+    const snapshot = useSnapshot(store);
 
     const goLeft = () => {
         if (store.questionNumber > 0) {
@@ -48,7 +52,7 @@ export default function Page() {
             <h1 className="text-2xl">{store.surveyName}</h1>
         </nav>
         <section className="flex justify-between items-center h-full">
-            <button className="text-6xl w-1/12 flex justify-center" onClick={goLeft}><BsChevronCompactLeft /></button>
+            <button className={`text-6xl w-1/12 flex justify-center ${store.questionNumber === 0 && "btn-hide"}`} onClick={goLeft}><BsChevronCompactLeft /></button>
             <QuestionsSlide />
             <button className="text-6xl w-1/12 flex justify-center" onClick={goRight}><BsChevronCompactRight /></button>
         </section>

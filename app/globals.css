@@ -25,15 +25,7 @@ body {
 
 /* text input */
 .text-input {
-  @apply bg-gray-50 border border-gray-300 text-gray-900 rounded-lg block w-full p-2.5 outline-none;
-}
-
-.dark .text-input {
-  @apply bg-gray-700 border-gray-600 placeholder-gray-400 text-white;
-}
-
-.text-input:focus {
-  @apply border-blue-500 ring-blue-500;
+  @apply bg-transparent block w-full p-2.5 outline-none border-b-2 border-b-gray-300 ml-3;
 }
 
 /* primary button */
