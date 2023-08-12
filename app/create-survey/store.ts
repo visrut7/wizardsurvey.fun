@@ -6,7 +6,6 @@ export enum QuestionType {
     TEXT = "text",
     NUMBER = "number",
     DATE = "date",
-    RATE_5 = "rate-5",
     RATE_10 = "rate-10",
     STAR_5 = "star-5",
     EMOJIS = "emojis",

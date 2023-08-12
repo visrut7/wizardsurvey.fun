@@ -1,0 +1,33 @@
+/* style.css */
+.rating-scale-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    gap: 10px;
+}
+
+.rating-input {
+    display: none;
+}
+
+.rating-circle {
+    width: 2.8rem;
+    height: 2.8rem;
+    display: flex;
+    cursor: pointer;
+    border-radius: 50%;
+    align-items: center;
+    border: 2px solid #333;
+    background: transparent;
+    justify-content: center;
+    transition: border-color 0.3s ease-in-out;
+}
+
+.rating-input:checked+.rating-circle {
+    border-color: #007bff;
+    color: white;
+}
+
+.rating-number {
+    margin-top: 5px;
+}
