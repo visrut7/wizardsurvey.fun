@@ -29,17 +29,20 @@ const QuestionsSlide = () => {
         store.questions[store.questionNumber].choices = choices;
     }
 
-    return <section className="w-1/2 flex flex-col space-y-5">
-        <span className="flex">
-            <h1 className="text-5xl flex items-end">{store.questionNumber + 1}.</h1>
-            <input value={store.questions[store.questionNumber].question} onChange={handleQuestionTextChange} className="text-input text-3xl" type="text" name="question" id="question" placeholder="How would you rate this survey from 1 to 10?" autoFocus autoComplete="off" />
-        </span>
+    return <section className="w-1/2 h-2/3 flex flex-col space-y-5 justify-between">
 
-        {store.questions[store.questionNumber].type === QuestionType.RATE_10 && <Rating10 />}
-        {store.questions[store.questionNumber].type === QuestionType.SINGLECHOICE && <SingleChoice choices={store.questions[store.questionNumber].choices!} setChoices={setChoices} />}
-        {store.questions[store.questionNumber].type === QuestionType.MULTICHOICE && <MultiChoice choices={store.questions[store.questionNumber].choices!} setChoices={setChoices} />}
-        {store.questions[store.questionNumber].type === QuestionType.STAR_5 && <FiveStarRating />}
-        {store.questions[store.questionNumber].type === QuestionType.EMOJIS && <FeedbackEmoji />}
+        <section className="flex flex-col gap-y-6">
+            <span className="flex">
+                <h1 className="text-5xl flex items-end">{store.questionNumber + 1}.</h1>
+                <input value={store.questions[store.questionNumber].question} onChange={handleQuestionTextChange} className="text-input text-3xl" type="text" name="question" id="question" placeholder="How would you rate this survey from 1 to 10?" autoFocus autoComplete="off" />
+            </span>
+
+            {store.questions[store.questionNumber].type === QuestionType.RATE_10 && <Rating10 />}
+            {store.questions[store.questionNumber].type === QuestionType.SINGLECHOICE && <SingleChoice choices={store.questions[store.questionNumber].choices!} setChoices={setChoices} />}
+            {store.questions[store.questionNumber].type === QuestionType.MULTICHOICE && <MultiChoice choices={store.questions[store.questionNumber].choices!} setChoices={setChoices} />}
+            {store.questions[store.questionNumber].type === QuestionType.STAR_5 && <FiveStarRating />}
+            {store.questions[store.questionNumber].type === QuestionType.EMOJIS && <FeedbackEmoji />}
+        </section>
 
         <select id="question-types" value={store.questions[store.questionNumber].type} onChange={handleQuestionTypeChange} className="text-xl bg-gray-50 border border-gray-300 text-gray-900 cursor-pointer rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
             <option disabled value="">Choose a question type</option>
