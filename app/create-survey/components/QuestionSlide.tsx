@@ -6,6 +6,7 @@ import Rating10 from "./Rating10";
 import SingleChoice from "./SingleChoice";
 import MultiChoice from "./MultiChoice";
 import FiveStarRating from "./FiveStartRating";
+import FeedbackEmoji from "./Emojis";
 
 const QuestionsSlide = () => {
     const snapshot = useSnapshot(store);
@@ -38,6 +39,7 @@ const QuestionsSlide = () => {
         {store.questions[store.questionNumber].type === QuestionType.SINGLECHOICE && <SingleChoice choices={store.questions[store.questionNumber].choices!} setChoices={setChoices} />}
         {store.questions[store.questionNumber].type === QuestionType.MULTICHOICE && <MultiChoice choices={store.questions[store.questionNumber].choices!} setChoices={setChoices} />}
         {store.questions[store.questionNumber].type === QuestionType.STAR_5 && <FiveStarRating />}
+        {store.questions[store.questionNumber].type === QuestionType.EMOJIS && <FeedbackEmoji />}
 
         <select id="question-types" value={store.questions[store.questionNumber].type} onChange={handleQuestionTypeChange} className="text-xl bg-gray-50 border border-gray-300 text-gray-900 cursor-pointer rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
             <option disabled value="">Choose a question type</option>
@@ -45,6 +47,7 @@ const QuestionsSlide = () => {
             <option value={QuestionType.SINGLECHOICE}>Single Choice</option>
             <option value={QuestionType.MULTICHOICE}>Multi Choice</option>
             <option value={QuestionType.STAR_5}>Five ⭐</option>
+            <option value={QuestionType.EMOJIS}>Emojis</option>
         </select>
     </section>;
 };

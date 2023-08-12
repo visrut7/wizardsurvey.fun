@@ -1,0 +1,19 @@
+.feedback-emoji {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+
+.emoji {
+    font-size: 2rem;
+    cursor: pointer;
+    transition: transform 0.2s, opacity 0.2s;
+}
+
+.emoji:hover {
+    transform: scale(1.1);
+}
+
+.selected {
+    opacity: 0.6;
+}
