@@ -1,6 +1,7 @@
 import clientPromise from '@/app/mongodb';
 import { NextResponse } from 'next/server';
 import * as crypto from 'crypto';
+import { v4 as uuidv4 } from "uuid";
 
 function getClientIP(request: Request): string | undefined {
     const headers = request.headers;
@@ -26,6 +27,9 @@ export async function POST(request: Request) {
     const client = await clientPromise;
     const db = client.db("survey-db");
     const creatorHistory = await db.collection("creator-ip-hash").findOne({ ipHash: ipHashDigest });
+
+    const uuid = uuidv4();
+
     if (creatorHistory === null) {
         await db.collection("creator-ip-hash").insertOne({ ipHash: ipHashDigest, count: 1 });
     } else {
@@ -40,7 +44,8 @@ export async function POST(request: Request) {
 
     const survey = await request.json();
     survey.creatorIpHash = ipHashDigest;
-    const surveyId = (await db.collection("survey-templates").insertOne(survey)).insertedId.toString();
+    survey.uuid = uuid;
+    await db.collection("survey-templates").insertOne(survey);
 
-    return NextResponse.json({ "id": surveyId }, { status: 201 });
+    return NextResponse.json({ "survey-id": uuid }, { status: 201 });
 }

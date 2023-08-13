@@ -1,12 +1,13 @@
 "use client";
 
 import { useSnapshot } from "valtio";
-import { QuestionType, store } from "../store";
+import { store } from "../store";
 import Rating10 from "./Rating10";
 import SingleChoice from "./SingleChoice";
 import MultiChoice from "./MultiChoice";
 import FiveStarRating from "./FiveStartRating";
 import FeedbackEmoji from "./Emojis";
+import { QuestionType } from "@/app/models/types";
 
 const QuestionsSlide = () => {
     const snapshot = useSnapshot(store);

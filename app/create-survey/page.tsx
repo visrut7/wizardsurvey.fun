@@ -1,10 +1,11 @@
 "use client";
 import { BsChevronCompactLeft, BsChevronCompactRight } from "react-icons/bs";
 import QuestionsSlide from "./components/QuestionSlide";
-import { QuestionType, store } from "./store";
+import { store } from "./store";
 
 import "./style.css";
 import { useSnapshot } from "valtio";
+import { QuestionType } from "../models/types";
 
 export default function Page() {
     const snapshot = useSnapshot(store);
@@ -47,9 +48,13 @@ export default function Page() {
         console.log(data);
     };
 
+    const editSurveyName = (event: React.ChangeEvent<HTMLInputElement>) => {
+        store.surveyName = event.target.value;
+    };
+
     return (<main className="flex flex-col h-screen">
         <nav className="flex justify-center p-3">
-            <h1 className="text-2xl">{store.surveyName}</h1>
+            <input type="text" className="text-2xl bg-transparent outline-none" value={store.surveyName} onChange={editSurveyName} />
         </nav>
         <section className="flex justify-between items-center h-full">
             <button className={`text-6xl w-1/12 flex justify-center ${store.questionNumber === 0 && "btn-hide"}`} onClick={goLeft}><BsChevronCompactLeft /></button>
