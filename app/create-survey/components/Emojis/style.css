@@ -5,13 +5,13 @@
 }
 
 .emoji {
-    font-size: 2rem;
+    font-size: 3rem;
     cursor: pointer;
     transition: transform 0.2s, opacity 0.2s;
 }
 
 .emoji:hover {
-    transform: scale(1.1);
+    transform: scale(1.2);
 }
 
 .selected {

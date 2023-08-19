@@ -17,7 +17,7 @@
     cursor: pointer;
     border-radius: 50%;
     align-items: center;
-    border: 2px solid #333;
+    border: 2px solid #ddd;
     background: transparent;
     justify-content: center;
     transition: border-color 0.3s ease-in-out;
@@ -25,6 +25,7 @@
 
 .rating-input:checked+.rating-circle {
     border-color: #007bff;
+    background-color: #007bff;
     color: white;
 }
 

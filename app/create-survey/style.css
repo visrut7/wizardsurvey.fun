@@ -2,6 +2,10 @@
     @apply opacity-0 cursor-default;
 }
 
-* {
+p,
+span,
+div,
+input,
+button {
     @apply text-white;
 }
