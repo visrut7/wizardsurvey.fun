@@ -1,3 +1,7 @@
 .btn-hide {
     @apply opacity-0 cursor-default;
 }
+
+* {
+    @apply text-white;
+}

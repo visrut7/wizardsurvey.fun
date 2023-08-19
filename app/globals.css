@@ -17,10 +17,7 @@
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))) rgb(var(--background-start-rgb));
+  background-image: linear-gradient(to bottom, #47026b, #010d40);
 }
 
 /* text input */
@@ -43,4 +40,10 @@ body {
 
 .btn-primary:disabled {
   @apply cursor-not-allowed bg-blue-400;
+}
+
+.btn-gradient {
+  @apply btn-primary;
+  @apply transition ease-in-out bg-gradient-to-r from-slate-900 via-purple-900;
+  @apply border outline-none border-orange-500;
 }
