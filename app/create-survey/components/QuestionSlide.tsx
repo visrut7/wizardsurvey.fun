@@ -1,5 +1,7 @@
 "use client";
 
+import "./style.css";
+
 import { useSnapshot } from "valtio";
 import { store } from "../store";
 import Rating10 from "./Rating10";
@@ -43,6 +45,8 @@ const QuestionsSlide = () => {
             {store.questions[store.questionNumber].type === QuestionType.MULTICHOICE && <MultiChoice choices={store.questions[store.questionNumber].choices!} setChoices={setChoices} />}
             {store.questions[store.questionNumber].type === QuestionType.STAR_5 && <FiveStarRating />}
             {store.questions[store.questionNumber].type === QuestionType.EMOJIS && <FeedbackEmoji />}
+            {store.questions[store.questionNumber].type === QuestionType.NUMBER && <input type="number" className="user-input" name="number" id="number" />}
+            {store.questions[store.questionNumber].type === QuestionType.TEXT && <input type="text" className="user-input" name="text" id="text" />}
         </section>
 
         <select id="question-types" value={store.questions[store.questionNumber].type} onChange={handleQuestionTypeChange} className="text-xl bg-gray-50 border border-gray-300 text-gray-900 cursor-pointer rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
@@ -52,6 +56,8 @@ const QuestionsSlide = () => {
             <option value={QuestionType.MULTICHOICE}>Multi Choice</option>
             <option value={QuestionType.STAR_5}>Five ⭐</option>
             <option value={QuestionType.EMOJIS}>Emojis</option>
+            <option value={QuestionType.NUMBER}>Number</option>
+            <option value={QuestionType.TEXT}>Text</option>
         </select>
     </section>;
 };
