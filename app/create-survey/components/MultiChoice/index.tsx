@@ -1,4 +1,4 @@
-import React, { useState } from "react"; // Don't forget to import useState
+import React, { useState } from "react";
 import "./style.css";
 import { IoRemoveCircleSharp } from "react-icons/io5";
 
@@ -25,7 +25,7 @@ const MultiChoice = ({ choices, setChoices }: MultiChoiceProps) => {
     };
 
     const handleRemoveChoice = (index: number) => {
-        if (choices.length > 1) {
+        if (choices.length > 2) {
             const updatedChoices = choices.filter((_, i) => i !== index);
             setChoices(updatedChoices);
             const updatedCheckboxStates = checkboxStates.filter((_, i) => i !== index);
@@ -57,7 +57,7 @@ const MultiChoice = ({ choices, setChoices }: MultiChoiceProps) => {
                             className="bg-transparent outline-none"
                         />
                     </label>
-                    {choices.length > 1 && (
+                    {choices.length > 2 && (
                         <button
                             type="button"
                             onClick={() => handleRemoveChoice(idx)}

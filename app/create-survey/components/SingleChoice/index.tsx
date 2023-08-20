@@ -1,3 +1,4 @@
+import React from "react";
 import "./style.css";
 import { IoRemoveCircleSharp } from "react-icons/io5";
 
@@ -21,7 +22,7 @@ const SingleChoice = ({ choices, setChoices }: SingleChoiceProps) => {
     };
 
     const handleRemoveChoice = (index: number) => {
-        if (choices.length > 1) {
+        if (choices.length > 2) { // Change this condition to check for at least 2 choices
             const updatedChoices = choices.filter((_, i) => i !== index);
             setChoices(updatedChoices);
         }
@@ -46,7 +47,7 @@ const SingleChoice = ({ choices, setChoices }: SingleChoiceProps) => {
                             className="bg-transparent outline-none"
                         />
                     </label>
-                    {choices.length > 1 && (
+                    {choices.length > 2 && ( // Change this condition to check for at least 2 choices
                         <button
                             type="button"
                             onClick={() => handleRemoveChoice(idx)}
