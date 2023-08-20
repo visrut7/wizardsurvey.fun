@@ -10,6 +10,7 @@ import MultiChoice from "./MultiChoice";
 import FiveStarRating from "./FiveStartRating";
 import FeedbackEmoji from "./Emojis";
 import { QuestionType } from "@/app/models/types";
+import YesOrNo from "./YesOrNo";
 
 const QuestionsSlide = () => {
     const snapshot = useSnapshot(store);
@@ -47,6 +48,7 @@ const QuestionsSlide = () => {
             {store.questions[store.questionNumber].type === QuestionType.EMOJIS && <FeedbackEmoji />}
             {store.questions[store.questionNumber].type === QuestionType.NUMBER && <input type="number" className="user-input" name="number" id="number" />}
             {store.questions[store.questionNumber].type === QuestionType.TEXT && <input type="text" className="user-input" name="text" id="text" />}
+            {store.questions[store.questionNumber].type === QuestionType.YES_OR_NO && <YesOrNo choices={["yes", "no"]} />}
         </section>
 
         <select id="question-types" value={store.questions[store.questionNumber].type} onChange={handleQuestionTypeChange} className="text-xl bg-gray-50 border border-gray-300 text-gray-900 cursor-pointer rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
@@ -58,6 +60,7 @@ const QuestionsSlide = () => {
             <option value={QuestionType.EMOJIS}>Emojis</option>
             <option value={QuestionType.NUMBER}>Number</option>
             <option value={QuestionType.TEXT}>Text</option>
+            <option value={QuestionType.YES_OR_NO}>Yes or No</option>
         </select>
     </section>;
 };

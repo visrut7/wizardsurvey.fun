@@ -7,6 +7,7 @@ export enum QuestionType {
     RATE_10 = "rate-10",
     STAR_5 = "star-5",
     EMOJIS = "emojis",
+    YES_OR_NO = "yes-or-no",
     NOT_DECIDED = "",
 }
 
