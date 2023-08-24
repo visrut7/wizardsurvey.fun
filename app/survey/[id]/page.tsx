@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import { useSnapshot } from "valtio";
 import { store } from "./store";
 import AnswerForm from "./components/AnswerForm";
+import LoadingSpinner from "@/app/components/LoadingSpinner";
 
 export default function FillSurvey() {
     const snapshot = useSnapshot(store);
@@ -22,10 +23,10 @@ export default function FillSurvey() {
         getSurvey();
     }, []);
 
-    if (store.questions.length === 0) return (<div>Loading...</div>);
+    if (store.questions.length === 0) return (<LoadingSpinner />);
 
     return (
-        <main className="flex flex-col h-screen">
+        <main className="flex flex-col h-screen text-white">
             <nav className="flex justify-center p-3">
                 <h1 className="text-2xl">{store.surveyName}</h1>
             </nav>

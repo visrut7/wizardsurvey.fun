@@ -12,4 +12,5 @@ npm run lint ||
 
 echo '🎉 No error found: committing this now.... ✨🚀🏄‍♂️🍻'
 
+npm run test:ci
 npx lint-staged
