@@ -1,17 +1,15 @@
 import { ImageResponse } from 'next/server'
-import WizardSurvey from './icons/WizardSurvey'
+import WizardSurvey from '../icons/WizardSurvey'
+
 
 export const runtime = 'edge'
 
-export const alt = 'Wizard Icon'
-export const size = {
-    width: 16,
-    height: 16,
+const size = {
+    width: 80,
+    height: 80,
 }
 
-export const contentType = 'image/png'
-
-export default async function Image() {
+export async function GET() {
 
     return new ImageResponse(
         (
