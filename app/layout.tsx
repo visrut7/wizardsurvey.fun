@@ -9,6 +9,9 @@ export const metadata: Metadata = {
   description: 'A survey taker powered by OpenAI',
   openGraph: {
     type: 'website',
+    siteName: 'Wizard Survey',
+    title: 'Create Survey using OpenAI',
+    description: 'A survey taker powered by OpenAI',
     locale: 'en_US',
     url: 'https://wizardsurvey.fun/',
     images: [
@@ -24,7 +27,7 @@ export const metadata: Metadata = {
     site: '@wizard_survey',
     card: 'summary_large_image',
     description: 'A survey taker powered by OpenAI',
-    title: 'Wizard Survey',
+    title: 'Create Survey using OpenAI',
     siteId: 'wizard_survey',
     images: [
       {
