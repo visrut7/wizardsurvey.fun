@@ -22,16 +22,16 @@ const SingleChoice = ({ choices, setChoices }: SingleChoiceProps) => {
     };
 
     const handleRemoveChoice = (index: number) => {
-        if (choices.length > 2) { // Change this condition to check for at least 2 choices
+        if (choices.length > 2) {
             const updatedChoices = choices.filter((_, i) => i !== index);
             setChoices(updatedChoices);
         }
     };
 
     return (
-        <div className="single-choice-container">
+        <div className="flex flex-col gap-2">
             {choices.map((choice, idx) => (
-                <div key={idx} className="flex justify-between">
+                <div key={idx} className="flex w-full justify-between">
                     <label className="flex gap-x-3">
                         <input
                             type="radio"
@@ -47,7 +47,7 @@ const SingleChoice = ({ choices, setChoices }: SingleChoiceProps) => {
                             className="bg-transparent outline-none"
                         />
                     </label>
-                    {choices.length > 2 && ( // Change this condition to check for at least 2 choices
+                    {choices.length > 2 && (
                         <button
                             type="button"
                             onClick={() => handleRemoveChoice(idx)}
