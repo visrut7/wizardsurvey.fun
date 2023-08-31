@@ -1,68 +1,86 @@
-"use client";
-import { BsChevronCompactLeft, BsChevronCompactRight } from "react-icons/bs";
-import QuestionsSlide from "./components/QuestionSlide";
-import { store } from "./store";
+'use client'
+import { BsChevronCompactLeft, BsChevronCompactRight } from 'react-icons/bs'
+import QuestionsSlide from './components/QuestionSlide'
 
-import "./style.css";
-import { useSnapshot } from "valtio";
-import { QuestionType } from "../models/types";
+import './style.css'
+import { Question, QuestionType } from '../models/types'
+import { useAppContext } from '../context/AppContext'
 
-export default function Page() {
-    const snapshot = useSnapshot(store);
+export default function CreateSurvey() {
+  const emptyQuestion = { question: '', type: QuestionType.NOT_DECIDED }
+  const {
+    addNewQuestion,
+    isQuestionDecided,
+    questions,
+    currentQuestionNumber,
+    setCurrentQuestionNumber,
+    name,
+    setName
+  } = useAppContext()
 
-    const goLeft = () => {
-        if (store.questionNumber > 0) {
-            store.questionNumber--;
-        }
-    };
+  const goLeft = () => {
+    if (currentQuestionNumber > 0) {
+      setCurrentQuestionNumber(currentQuestionNumber - 1)
+    }
+  }
 
-    const currentQuestionIsNotDecided = (question: { question: string; type: QuestionType; }) => {
-        return question.question === "" || question.type === QuestionType.NOT_DECIDED;
+  const goRight = () => {
+    if (!isQuestionDecided(questions[currentQuestionNumber])) {
+      return
     }
 
-    const goRight = () => {
-        if (currentQuestionIsNotDecided(store.questions[store.questionNumber])) {
-            return;
-        }
+    if (currentQuestionNumber === questions.length - 1) {
+      addNewQuestion(emptyQuestion)
+    }
+    setCurrentQuestionNumber(currentQuestionNumber + 1)
+  }
 
-        if (store.questionNumber === store.questions.length - 1) {
-            store.questions.push({ question: "", type: QuestionType.NOT_DECIDED });
-        }
-        store.questionNumber++;
-    };
+  const getValidQuestions = (questions: Question[]) => questions.filter((question) => isQuestionDecided(question))
 
-    const submitSurvey = async () => {
-        if (currentQuestionIsNotDecided(store.questions[store.questionNumber])) {
-            return;
-        }
+  const submitSurvey = async () => {
+    if (!isQuestionDecided(questions[currentQuestionNumber])) {
+      return
+    }
 
-        store.questions = store.questions.filter(question => !currentQuestionIsNotDecided(question));
+    const validQuestions = getValidQuestions(questions)
 
-        const res = await fetch("create-survey/api", {
-            method: "POST", body: JSON.stringify({
-                surveyName: store.surveyName,
-                questions: [...store.questions]
-            })
-        });
-        const data = await res.json();
-        console.log(data);
-    };
+    const res = await fetch('create-survey/api', {
+      method: 'POST',
+      body: JSON.stringify({
+        surveyName: name,
+        questions: [...validQuestions]
+      })
+    })
+    const data = await res.json()
+    console.log(data)
+  }
 
-    const editSurveyName = (event: React.ChangeEvent<HTMLInputElement>) => {
-        store.surveyName = event.target.value;
-    };
+  const editSurveyName = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setName(event.target.value)
+  }
 
-    return (<main className="flex flex-col h-screen">
-        <nav className="flex justify-center p-3">
-            <input type="text" className="text-2xl bg-transparent outline-none" value={store.surveyName} onChange={editSurveyName} />
-        </nav>
-        <section className="flex justify-between items-center h-full">
-            <button className={`text-6xl w-1/12 flex justify-center ${store.questionNumber === 0 && "btn-hide"}`} onClick={goLeft}><BsChevronCompactLeft /></button>
-            <QuestionsSlide />
-            <button className="text-6xl w-1/12 flex justify-center" onClick={goRight}><BsChevronCompactRight /></button>
-        </section>
-        <footer className="flex justify-end p-4">
-            <button className="btn-primary" onClick={submitSurvey}>Finish</button>
-        </footer>
-    </main>);
+  return (
+    <main className='flex flex-col h-screen'>
+      <nav className='flex justify-center p-3'>
+        <input type='text' className='text-2xl bg-transparent outline-none' value={name} onChange={editSurveyName} data-testid="survey-name-input" />
+      </nav>
+      <section className='flex justify-between items-center h-full'>
+        <button
+          className={`text-6xl w-1/12 flex justify-center ${currentQuestionNumber === 0 && 'btn-hide'}`}
+          onClick={goLeft}
+        >
+          <BsChevronCompactLeft />
+        </button>
+        <QuestionsSlide />
+        <button className='text-6xl w-1/12 flex justify-center' onClick={goRight}>
+          <BsChevronCompactRight />
+        </button>
+      </section>
+      <footer className='flex justify-end p-4'>
+        <button className='btn-primary' onClick={submitSurvey}>
+          Finish
+        </button>
+      </footer>
+    </main>
+  )
 }

@@ -1,38 +1,35 @@
-"use client";
-import { useParams } from "next/navigation";
-import { useEffect } from "react";
-import { useSnapshot } from "valtio";
-import { store } from "./store";
-import AnswerForm from "./components/AnswerForm";
-import LoadingSpinner from "@/app/components/LoadingSpinner";
+'use client'
+import { useParams } from 'next/navigation'
+import { useEffect } from 'react'
+import AnswerForm from './components/AnswerForm'
+import LoadingSpinner from '@/app/components/LoadingSpinner'
+import { useAppContext } from '@/app/context/AppContext'
 
 export default function FillSurvey() {
-    const snapshot = useSnapshot(store);
+  const { setName, setQuestions, questions, name, currentQuestionNumber } = useAppContext()
+  const { id } = useParams()
 
-    const { id } = useParams();
+  const getSurvey = async () => {
+    const res = await fetch(`/survey/${id}/api`)
+    const data = await res.json()
+    setName(data.surveyName)
+    setQuestions([...data.questions])
+  }
 
-    const getSurvey = async () => {
-        const res = await fetch(`/survey/${id}/api`);
-        const data = await res.json();
-        store.surveyName = data.surveyName;
-        store.questionNumber = 0;
-        store.questions = [...data.questions];
-    }
+  useEffect(() => {
+    getSurvey()
+  }, [])
 
-    useEffect(() => {
-        getSurvey();
-    }, []);
+  if (questions.length === 0) return <LoadingSpinner />
 
-    if (store.questions.length === 0) return (<LoadingSpinner />);
-
-    return (
-        <main className="flex flex-col h-screen text-white">
-            <nav className="flex justify-center p-3">
-                <h1 className="text-2xl">{store.surveyName}</h1>
-            </nav>
-            <section className="flex flex-col justify-between items-center h-full">
-                <AnswerForm />
-            </section>
-        </main>
-    )
+  return (
+    <main className='flex flex-col h-screen text-white'>
+      <nav className='flex justify-center p-3'>
+        <h1 className='text-2xl'>{name}</h1>
+      </nav>
+      <section className='flex flex-col justify-between items-center h-full'>
+        <AnswerForm question={questions[currentQuestionNumber]} />
+      </section>
+    </main>
+  )
 }

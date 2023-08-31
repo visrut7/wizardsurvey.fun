@@ -18,4 +18,4 @@ describe('Home', () => {
         const links = screen.getAllByRole('link');
         expect(links.length).toBe(3);
     });
-})
+});
