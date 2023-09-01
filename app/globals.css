@@ -47,3 +47,13 @@ body {
   @apply transition ease-in-out bg-gradient-to-r from-slate-900 via-purple-900;
   @apply border outline-none border-orange-500;
 }
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.user-input {
+    @apply outline-none text-black p-2 mx-10 text-2xl;
+}

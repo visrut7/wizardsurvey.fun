@@ -1,34 +1,40 @@
-import React from "react";
-import "./style.css";
+import React, { useState } from 'react'
+import './style.css'
+import { Answer } from '@/app/models/types'
 
 type YesOrNoProps = {
-    choices: string[];
-};
+  choices: string[]
+  setAnswer?: (answer: Answer) => void
+}
 
-const YesOrNo = ({ choices }: YesOrNoProps) => {
-    const handleChoiceChange = (index: number, newValue: string) => {
-        const updatedChoices = [...choices];
-        updatedChoices[index] = newValue;
-    };
+const YesOrNo = ({ choices, setAnswer }: YesOrNoProps) => {
+  const [selectedChoice, setSelectedChoice] = useState<string>('')
 
-    return (
-        <div className="single-choice-container">
-            {choices.map((choice, idx) => (
-                <div key={idx} className="flex justify-between">
-                    <label className="flex items-center gap-x-2 capitalize">
-                        <input
-                            type="radio"
-                            value={choice}
-                            name="choice"
-                            id={`${choice}-${idx}`}
-                            className="radio-input"
-                        />
-                        <span>{choice}</span>
-                    </label>
-                </div>
-            ))}
+  const handleChoiceChange = (choice: string) => {
+    setSelectedChoice(choice)
+    setAnswer && setAnswer(choice)
+  }
+
+  return (
+    <div className='single-choice-container'>
+      {choices.map((choice, idx) => (
+        <div key={idx} className='flex justify-between'>
+          <label className='flex items-center gap-x-2 capitalize'>
+            <input
+              type='radio'
+              value={choice}
+              name='choice'
+              id={`${choice}-${idx}`}
+              className='radio-input'
+              checked={selectedChoice === choice}
+              onChange={() => handleChoiceChange(choice)}
+            />
+            <span>{choice}</span>
+          </label>
         </div>
-    );
-};
+      ))}
+    </div>
+  )
+}
 
-export default YesOrNo;
+export default YesOrNo

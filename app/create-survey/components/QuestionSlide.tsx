@@ -1,7 +1,5 @@
 'use client'
 
-import './style.css'
-
 import { QuestionType } from '@/app/models/types'
 
 import Rating10 from './Rating10'
@@ -11,6 +9,8 @@ import FiveStarRating from './FiveStartRating'
 import FeedbackEmoji from './Emojis'
 import YesOrNo from './YesOrNo'
 import { useAppContext } from '@/app/context/AppContext'
+import NumberInput from './NumberInput'
+import TextInput from './TextInput'
 
 const QuestionsSlide = () => {
   const { questions, currentQuestionNumber, setCurrentQuestion } = useAppContext()
@@ -60,12 +60,8 @@ const QuestionsSlide = () => {
         )}
         {questions[currentQuestionNumber].type === QuestionType.STAR_5 && <FiveStarRating />}
         {questions[currentQuestionNumber].type === QuestionType.EMOJIS && <FeedbackEmoji />}
-        {questions[currentQuestionNumber].type === QuestionType.NUMBER && (
-          <input type='number' className='user-input' name='number' id='number' />
-        )}
-        {questions[currentQuestionNumber].type === QuestionType.TEXT && (
-          <input type='text' className='user-input' name='text' id='text' />
-        )}
+        {questions[currentQuestionNumber].type === QuestionType.NUMBER && <NumberInput />}
+        {questions[currentQuestionNumber].type === QuestionType.TEXT && <TextInput />}
         {questions[currentQuestionNumber].type === QuestionType.YES_OR_NO && <YesOrNo choices={['yes', 'no']} />}
       </section>
 

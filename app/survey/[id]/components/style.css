@@ -1,0 +1,14 @@
+.start-right {
+  transform: translateX(400%);
+  transition: transform 0.3s ease-in;
+}
+
+.enter-center {
+  transform: translateX(0%);
+  transition: transform 0.3s ease-in;
+}
+
+.exit-left {
+  transform: translateX(-400%);
+  transition: transform 0.3s ease-in;
+}
