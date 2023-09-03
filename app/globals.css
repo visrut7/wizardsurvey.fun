@@ -44,16 +44,26 @@ body {
 
 .btn-gradient {
   @apply btn-primary;
-  @apply transition ease-in-out bg-gradient-to-r from-slate-900 via-purple-900;
-  @apply border outline-none border-orange-500;
+  background-image: linear-gradient(to right, #4776e6 0%, #8e54e9 51%, #4776e6 100%);
+  text-align: center;
+  transition: 0.5s;
+  background-size: 200% auto;
+  color: white;
+  box-shadow: 0 0 20px #eee;
 }
 
-input[type="number"]::-webkit-inner-spin-button,
-input[type="number"]::-webkit-outer-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
+.btn-gradient:hover {
+  color: #fff;
+  background-position: right center;
+  text-decoration: none;
+}
+
+input[type='number']::-webkit-inner-spin-button,
+input[type='number']::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
 
 .user-input {
-    @apply outline-none text-black p-2 mx-10 text-2xl;
+  @apply outline-none text-black p-2 mx-10 text-2xl;
 }
