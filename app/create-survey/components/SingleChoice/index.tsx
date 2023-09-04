@@ -37,7 +37,6 @@ const SingleChoice = ({ choices, setChoices, setAnswer }: SingleChoiceProps) => 
           <label className='flex gap-x-3'>
             <input
               onChange={() => {
-                console.log('hi')
                 setAnswer && setAnswer(choice)
               }}
               type='radio'

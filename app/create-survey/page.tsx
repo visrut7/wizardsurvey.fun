@@ -5,8 +5,11 @@ import QuestionsSlide from './components/QuestionSlide'
 import './style.css'
 import { Question, QuestionType } from '../models/types'
 import { useAppContext } from '../context/AppContext'
+import { useRouter } from 'next/navigation'
 
 export default function CreateSurvey() {
+  const router = useRouter()
+
   const emptyQuestion = { question: '', type: QuestionType.NOT_DECIDED }
   const {
     addNewQuestion,
@@ -52,7 +55,8 @@ export default function CreateSurvey() {
       })
     })
     const data = await res.json()
-    console.log(data)
+    const surveyId = data['survey-id']
+    if (surveyId !== undefined && surveyId !== null) router.push(`/survey/live/${surveyId}`)
   }
 
   const editSurveyName = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -62,7 +66,13 @@ export default function CreateSurvey() {
   return (
     <main className='flex flex-col h-screen'>
       <nav className='flex justify-center p-3'>
-        <input type='text' className='text-2xl bg-transparent outline-none text-center' value={name} onChange={editSurveyName} data-testid="survey-name-input" />
+        <input
+          type='text'
+          className='text-2xl bg-transparent outline-none text-center'
+          value={name}
+          onChange={editSurveyName}
+          data-testid='survey-name-input'
+        />
       </nav>
       <section className='flex justify-between items-center h-full'>
         <button
