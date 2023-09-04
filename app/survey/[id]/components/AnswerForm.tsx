@@ -12,7 +12,7 @@ import NumberInput from '@/app/create-survey/components/NumberInput'
 import TextInput from '@/app/create-survey/components/TextInput'
 import YesOrNo from '@/app/create-survey/components/YesOrNo'
 
-const AnswerForm = ({ question }: { question: Question }) => {
+const AnswerForm = () => {
   const { questions, answers, setAnswers, currentQuestionNumber, setCurrentQuestionNumber } = useAppContext()
 
   const moveToNextQuestion = () => {

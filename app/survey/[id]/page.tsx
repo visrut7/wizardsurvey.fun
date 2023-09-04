@@ -28,7 +28,7 @@ export default function FillSurvey() {
         <h1 className='text-2xl'>{name}</h1>
       </nav>
       <section className='flex flex-col justify-between items-center h-full'>
-        <AnswerForm question={questions[currentQuestionNumber]} />
+        <AnswerForm />
       </section>
     </main>
   )
