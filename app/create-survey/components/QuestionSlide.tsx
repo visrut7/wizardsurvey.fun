@@ -34,14 +34,14 @@ const QuestionsSlide = () => {
   }
 
   return (
-    <section className='w-1/2 h-2/3 flex flex-col space-y-5 justify-between'>
+    <section className='w-full xl:w-1/2 h-1/4 md:h-1/2 2xl:h-1/2 flex flex-col space-y-5 justify-between'>
       <section className='flex flex-col gap-y-6'>
         <span className='flex'>
-          <h1 className='text-5xl flex items-end'>{currentQuestionNumber + 1}.</h1>
+          <p className='flex items-end sm:text-sm md:text-3xl lg:text-4xl'>{currentQuestionNumber + 1}.</p>
           <input
             value={questions[currentQuestionNumber].question}
             onChange={handleQuestionTextChange}
-            className='text-input text-3xl'
+            className='text-input sm:text-sm md:text-2xl lg:text-3xl'
             type='text'
             name='question'
             id='question'
@@ -69,7 +69,7 @@ const QuestionsSlide = () => {
         id='question-types'
         value={questions[currentQuestionNumber].type}
         onChange={handleQuestionTypeChange}
-        className='text-xl bg-gray-50 border border-gray-300 text-gray-900 cursor-pointer rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'
+        className='text-sm md:text-xl bg-gray-50 border border-gray-300 text-gray-900 cursor-pointer rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'
       >
         <option disabled value=''>
           Choose a question type
