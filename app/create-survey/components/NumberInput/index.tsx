@@ -20,7 +20,7 @@ const NumberInput = ({ setAnswer }: QuestionUiProps) => {
           e.preventDefault()
           setAnswer && setAnswer(selectedNumber)
         }}
-        className='btn-primary'
+        className='btn-primary self-end my-5 mx-10'
         style={{ width: '70px' }}
       >
         Next

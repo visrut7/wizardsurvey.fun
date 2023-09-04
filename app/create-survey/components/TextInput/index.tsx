@@ -20,7 +20,7 @@ const TextInput = ({ setAnswer }: QuestionUiProps) => {
           e.preventDefault()
           setAnswer && setAnswer(text)
         }}
-        className='btn-primary'
+        className='btn-primary self-end my-5 mx-10'
         style={{ width: '70px' }}
       >
         Next
