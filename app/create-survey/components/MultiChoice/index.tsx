@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import './style.css'
 import { IoRemoveCircleSharp } from 'react-icons/io5'
 import { Answer } from '@/app/models/types'
+import { BsPlusCircleFill } from 'react-icons/bs'
 
 type MultiChoiceProps = {
   choices: string[]
@@ -42,21 +43,21 @@ const MultiChoice = ({ choices, setChoices, setAnswer }: MultiChoiceProps) => {
   }
 
   return (
-    <div className='multi-choice-container'>
+    <div className='flex flex-col gap-2'>
       {choices.map((choice, idx) => (
         <div key={idx} className='flex justify-between'>
-          <label className='flex gap-x-3'>
+          <label className='flex items-center px-8 gap-x-6'>
             <input
               type='checkbox'
               checked={checkboxStates[idx]}
               onChange={() => handleCheckboxChange(idx)}
-              className='checkbox-input'
+              className='checkbox checkbox-primary checkbox-input'
             />
             <input
               type='text'
               value={choice}
               onChange={(e) => handleChoiceChange(idx, e.target.value)}
-              className='bg-transparent outline-none'
+              className='input'
             />
           </label>
           {choices.length > 2 && (
@@ -67,8 +68,9 @@ const MultiChoice = ({ choices, setChoices, setAnswer }: MultiChoiceProps) => {
         </div>
       ))}
       {choices.length < 6 && (
-        <button type='button' onClick={handleAddChoice} className='add-button'>
-          Add Choice
+        <button type='button' onClick={handleAddChoice} className='btn btn-success w-36 m-auto'>
+          <BsPlusCircleFill className='text-xl' />
+          Add
         </button>
       )}
       <button
@@ -76,7 +78,7 @@ const MultiChoice = ({ choices, setChoices, setAnswer }: MultiChoiceProps) => {
           e.preventDefault()
           setAnswer && setAnswer(choices.filter((_, i) => checkboxStates[i]))
         }}
-        className='btn-primary'
+        className='btn btn-primary ml-auto mr-5'
         style={{ width: '70px' }}
       >
         Next

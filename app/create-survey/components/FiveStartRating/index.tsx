@@ -24,7 +24,7 @@ const FiveStarRating = ({ setAnswer }: QuestionUiProps) => {
             onClick={() => handleStarClick(index)}
           >
             <BsStarFill
-              className={`text-5xl cursor-pointer ${rating && rating > index ? 'text-yellow-500' : 'text-white'}`}
+              className={`text-5xl cursor-pointer ${rating && rating > index ? 'text-orange-400' : 'text-white'}`}
             />
           </span>
         ))}

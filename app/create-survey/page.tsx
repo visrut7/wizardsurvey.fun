@@ -74,13 +74,7 @@ export default function CreateSurvey() {
   return (
     <main className='flex flex-col h-screen'>
       <nav className='flex justify-center p-3'>
-        <input
-          type='text'
-          className='text-2xl bg-transparent outline-none text-center'
-          value={name}
-          onChange={editSurveyName}
-          data-testid='survey-name-input'
-        />
+        <input type='text' className='input' value={name} onChange={editSurveyName} data-testid='survey-name-input' />
       </nav>
       <section className='flex justify-between items-center h-full'>
         <button

@@ -11,7 +11,7 @@ const NumberInput = ({ setAnswer }: QuestionUiProps) => {
       <input
         onChange={(e) => setSelectedNumber(parseInt(e.target.value))}
         value={selectedNumber}
-        className='user-input'
+        className='input ml-8'
         type='number'
         placeholder='Ex: 37'
       ></input>
@@ -20,7 +20,7 @@ const NumberInput = ({ setAnswer }: QuestionUiProps) => {
           e.preventDefault()
           setAnswer && setAnswer(selectedNumber)
         }}
-        className='btn-primary self-end my-5 mx-10'
+        className='btn btn-primary self-end my-5'
         style={{ width: '70px' }}
       >
         Next

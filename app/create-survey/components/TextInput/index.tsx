@@ -11,7 +11,7 @@ const TextInput = ({ setAnswer }: QuestionUiProps) => {
       <input
         onChange={(e) => setText(e.target.value)}
         value={text}
-        className='user-input'
+        className='input ml-8'
         type='text'
         placeholder='Your Text'
       ></input>
@@ -20,7 +20,7 @@ const TextInput = ({ setAnswer }: QuestionUiProps) => {
           e.preventDefault()
           setAnswer && setAnswer(text)
         }}
-        className='btn-primary self-end my-5 mx-10'
+        className='btn btn-primary self-end my-5'
         style={{ width: '70px' }}
       >
         Next

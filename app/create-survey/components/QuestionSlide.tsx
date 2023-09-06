@@ -41,7 +41,7 @@ const QuestionsSlide = () => {
           <input
             value={questions[currentQuestionNumber].question}
             onChange={handleQuestionTextChange}
-            className='text-input sm:text-sm md:text-2xl lg:text-3xl'
+            className='text-input sm:text-sm md:text-xl lg:text-2xl'
             type='text'
             name='question'
             id='question'
@@ -69,7 +69,7 @@ const QuestionsSlide = () => {
         id='question-types'
         value={questions[currentQuestionNumber].type}
         onChange={handleQuestionTypeChange}
-        className='text-sm md:text-xl bg-gray-50 border border-gray-300 text-gray-900 cursor-pointer rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'
+        className='select'
       >
         <option disabled value=''>
           Choose a question type

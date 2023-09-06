@@ -1,7 +1,7 @@
 import React from 'react'
-import './style.css'
 import { IoRemoveCircleSharp } from 'react-icons/io5'
 import { Answer } from '@/app/models/types'
+import { BsPlusCircleFill } from 'react-icons/bs'
 
 type SingleChoiceProps = {
   choices: string[]
@@ -34,7 +34,7 @@ const SingleChoice = ({ choices, setChoices, setAnswer }: SingleChoiceProps) => 
     <div className='flex flex-col gap-2'>
       {choices.map((choice, idx) => (
         <div key={idx} className='flex w-full justify-between'>
-          <label className='flex gap-x-3'>
+          <label className='flex items-center gap-x-6 px-8'>
             <input
               onChange={() => {
                 setAnswer && setAnswer(choice)
@@ -43,13 +43,13 @@ const SingleChoice = ({ choices, setChoices, setAnswer }: SingleChoiceProps) => 
               value={choice}
               name='choice'
               id={`${choice}-${idx}`}
-              className='radio-input'
+              className='radio radio-info w-8 h-8'
             />
             <input
               type='text'
               value={choice}
               onChange={(e) => handleChoiceChange(idx, e.target.value)}
-              className='bg-transparent outline-none'
+              className='input input'
             />
           </label>
           {choices.length > 2 && (
@@ -60,8 +60,9 @@ const SingleChoice = ({ choices, setChoices, setAnswer }: SingleChoiceProps) => 
         </div>
       ))}
       {choices.length < 6 && (
-        <button type='button' onClick={handleAddChoice} className='add-button'>
-          Add Choice
+        <button type='button' onClick={handleAddChoice} className='btn btn-success w-36 m-auto'>
+          <BsPlusCircleFill className='text-xl' />
+          Add
         </button>
       )}
     </div>

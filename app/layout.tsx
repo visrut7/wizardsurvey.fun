@@ -19,9 +19,9 @@ export const metadata: Metadata = {
         url: 'https://wizardsurvey.fun/og',
         width: 1200,
         height: 630,
-        alt: 'Wizard Survey',
-      },
-    ],
+        alt: 'Wizard Survey'
+      }
+    ]
   },
   twitter: {
     site: '@wizard_survey',
@@ -34,21 +34,17 @@ export const metadata: Metadata = {
         url: 'https://wizardsurvey.fun/og',
         width: 1200,
         height: 630,
-        alt: 'Wizard Survey',
-      },
+        alt: 'Wizard Survey'
+      }
     ],
     creatorId: 'visrut06815925',
-    creator: '@visrut06815925',
+    creator: '@visrut06815925'
   }
 }
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
+    <html lang='en'>
       <body className={`${inter.className} overflow-hidden`}>{children}</body>
     </html>
   )

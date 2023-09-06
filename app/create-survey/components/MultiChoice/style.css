@@ -1,27 +1,6 @@
-.multi-choice-container {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-
 .checkbox-input {
-    appearance: none;
-    width: 2rem;
-    height: 2rem;
-    cursor: pointer;
-    border: 2px solid #ddd;
-    border-radius: 4px;
-    margin-right: 8px;
-    outline: none;
-    transition: border-color 0.3s ease-in-out;
-}
-
-.checkbox-input:checked {
-    background-color: #007bff;
-    border-color: #007bff;
-}
-
-.checkbox-input:focus {
-    border-color: #007bff;
-    box-shadow: 0 0 4px #007bff;
+  width: 2rem;
+  height: 2rem;
+  outline: none;
+  border: 2px solid #ddd;
 }
