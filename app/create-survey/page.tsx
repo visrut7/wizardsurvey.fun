@@ -6,6 +6,7 @@ import './style.css'
 import { Question, QuestionType } from '../models/types'
 import { useAppContext } from '../context/AppContext'
 import { useRouter } from 'next/navigation'
+import { useState } from 'react'
 
 export default function CreateSurvey() {
   const router = useRouter()
@@ -20,6 +21,8 @@ export default function CreateSurvey() {
     name,
     setName
   } = useAppContext()
+
+  const [isFinishLoading, setIsFinishLoading] = useState(false)
 
   const goLeft = () => {
     if (currentQuestionNumber > 0) {
@@ -45,6 +48,8 @@ export default function CreateSurvey() {
       return
     }
 
+    setIsFinishLoading(true)
+
     const validQuestions = getValidQuestions(questions)
 
     const res = await fetch('create-survey/api', {
@@ -54,6 +59,9 @@ export default function CreateSurvey() {
         questions: [...validQuestions]
       })
     })
+
+    setIsFinishLoading(false)
+
     const data = await res.json()
     const surveyId = data['survey-id']
     if (surveyId !== undefined && surveyId !== null) router.push(`/survey/live/${surveyId}`)
@@ -87,8 +95,8 @@ export default function CreateSurvey() {
         </button>
       </section>
       <footer className='flex justify-end p-4'>
-        <button className='btn-primary' onClick={submitSurvey}>
-          Finish
+        <button className={`btn btn-primary`} onClick={submitSurvey}>
+          {isFinishLoading && <span className='loading loading-spinner'></span>} Finish
         </button>
       </footer>
     </main>

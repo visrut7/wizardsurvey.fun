@@ -21,14 +21,14 @@ export default function Home() {
         </h1>
       </section>
       <section className='flex flex-col md:flex-row justify-center gap-x-10 gap-y-4 flex-wrap w-1/2 xl:w-1/3 2xl:w-1/3'>
-        <Link className='btn-primary' href='/create-survey'>
+        <Link className='btn btn-primary' href='/create-survey'>
           Create Manually
         </Link>
-        <Link className='btn-gradient' href='/generate-with-ai'>
+        <Link className='btn btn-gradient border-none' href='/generate-with-ai'>
           Generate with AI
         </Link>
         <Link
-          className='btn-primary flex justify-center gap-x-2'
+          className='btn btn-primary flex justify-center gap-x-2'
           href='https://github.com/visrut-at-incubyte/wizardsurvey.fun'
           target='_blank'
         >

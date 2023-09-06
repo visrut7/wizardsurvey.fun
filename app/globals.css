@@ -25,37 +25,19 @@ body {
   @apply bg-transparent block w-full p-2.5 outline-none border-b-2 border-b-gray-300 ml-3;
 }
 
-/* primary button */
-.btn-primary {
-  @apply text-white cursor-pointer ring-2 font-medium rounded-lg text-sm px-5 py-2.5 text-center bg-blue-600 w-auto h-10;
-}
-
-.btn-primary:hover {
-  @apply bg-blue-700;
-}
-
-.btn-primary:focus {
-  @apply ring-blue-800 outline-none;
-}
-
-.btn-primary:disabled {
-  @apply cursor-not-allowed bg-blue-400;
-}
-
 .btn-gradient {
   @apply btn-primary;
   background-image: linear-gradient(to right, #4776e6 0%, #8e54e9 51%, #4776e6 100%);
-  text-align: center;
   transition: 0.5s;
   background-size: 200% auto;
-  color: white;
-  box-shadow: 0 0 20px #eee;
+  box-shadow: 0 0 10px #eee;
 }
 
 .btn-gradient:hover {
   color: #fff;
-  background-position: right center;
   text-decoration: none;
+  box-shadow: 0 0 20px #eee;
+  background-position: right center;
 }
 
 input[type='number']::-webkit-inner-spin-button,
