@@ -49,7 +49,7 @@ const SingleChoice = ({ choices, setChoices, setAnswer }: SingleChoiceProps) => 
               type='text'
               value={choice}
               onChange={(e) => handleChoiceChange(idx, e.target.value)}
-              className='input input'
+              className='input w-full'
             />
           </label>
           {choices.length > 2 && (
