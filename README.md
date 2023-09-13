@@ -14,6 +14,10 @@
 
 To contribute to this project, please follow these steps:
 
+- You can reach me out on [Twitter](https://twitter.com/visrut06815925) or [LinkedIn](https://www.linkedin.com/in/visrut-navadiya-4498391a4/) to discuss the feature you want to implement, or support development.
+
+### Setup
+
 - **Docker**: If you haven't already, install Docker to manage containers.
 - Run `npm run setup` to install all the dependencies and start mongodb container.
 - Run `npm run dev` to start the development server.
@@ -25,3 +29,13 @@ To contribute to this project, please follow these steps:
 - **MongoDB**: I chose MongoDB as the database due to its flexibility and user-friendliness for now it seems like a good fit for the project.
 - [Next.js](https://nextjs.org/) with [DaisyUI](https://daisyui.com/) for the frontend.
 - I am using [Mongoku](https://github.com/huggingface/Mongoku) to view the database state.
+
+## Features
+
+- [x] Ability to create a survey manually.
+- [ ] Ability to create a survey using OpenAI
+- [x] Ability to share the survey with a link.
+- [ ] Ability to submit survey responses.
+- [ ] Ability to view survey analytics.
+- [ ] Ability to export survey responses as CSV.
+- [ ] Ability to view survey responses as a chart.
