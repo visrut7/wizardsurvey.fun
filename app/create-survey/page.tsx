@@ -7,6 +7,7 @@ import { Question, QuestionType } from '../models/types'
 import { useAppContext } from '../context/AppContext'
 import { useRouter } from 'next/navigation'
 import { useState } from 'react'
+import Toast from '../components/Toast'
 
 export default function CreateSurvey() {
   const router = useRouter()
@@ -23,6 +24,7 @@ export default function CreateSurvey() {
   } = useAppContext()
 
   const [isFinishLoading, setIsFinishLoading] = useState(false)
+  const [showError, setShowError] = useState(false)
 
   const goLeft = () => {
     if (currentQuestionNumber > 0) {
@@ -60,7 +62,12 @@ export default function CreateSurvey() {
       })
     })
 
+    if (res.status === 429) {
+      setShowError(true)
+    }
+
     setIsFinishLoading(false)
+    // setShowError(false)
 
     const data = await res.json()
     const surveyId = data['survey-id']
@@ -73,6 +80,13 @@ export default function CreateSurvey() {
 
   return (
     <main className='flex flex-col h-screen'>
+      {showError && (
+        <Toast
+          duration={3000}
+          message='API Limit is reached for creating survey!'
+          onClose={() => setShowError(false)}
+        />
+      )}
       <nav className='flex justify-center p-3'>
         <input type='text' className='input' value={name} onChange={editSurveyName} data-testid='survey-name-input' />
       </nav>
