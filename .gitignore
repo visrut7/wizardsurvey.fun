@@ -19,6 +19,8 @@
 # misc
 .DS_Store
 *.pem
+bun.lockb
+/.config/nextjs-nodejs
 
 # debug
 npm-debug.log*
