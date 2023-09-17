@@ -70,7 +70,7 @@ const GenerateWithAi = () => {
         onChange={(e) => setSurveyDescription(e.target.value)}
       />
       <button type='submit' className='btn btn-primary' disabled={loading}>
-        {loading && <span className='loading loading-spinner'></span>} Finish Let&apos;s Go
+        {loading && <span className='loading loading-spinner'></span>} Let&apos;s Go
       </button>
     </form>
   )
