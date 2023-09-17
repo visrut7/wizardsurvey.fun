@@ -10,6 +10,10 @@ type SingleChoiceProps = {
 }
 
 const SingleChoice = ({ choices, setChoices, setAnswer }: SingleChoiceProps) => {
+  if (choices === undefined) {
+    return <></>
+  }
+
   const handleChoiceChange = (index: number, newValue: string) => {
     const updatedChoices = [...choices]
     updatedChoices[index] = newValue

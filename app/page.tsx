@@ -24,7 +24,7 @@ export default function Home() {
         <Link className='btn btn-primary' href='/create-survey'>
           Create Manually
         </Link>
-        <Link className='btn btn-gradient border-none' href='/generate-with-ai'>
+        <Link className='btn btn-gradient border-none' href='/create-survey/ai'>
           Generate with AI
         </Link>
         <Link

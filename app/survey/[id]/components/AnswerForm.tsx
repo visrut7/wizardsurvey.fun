@@ -23,7 +23,6 @@ const AnswerForm = () => {
 
   const setAnswer = (answer: Answer) => {
     setAnswers([...answers, answer])
-    console.log([...answers, answer])
     moveToNextQuestion()
   }
 
