@@ -2,7 +2,7 @@ import { NextResponse } from 'next/server'
 import { createHash, getClientIP } from '@/app/utils'
 import clientPromise from '@/app/mongodb'
 import openai from '@/app/openai'
-import { SURVEY_CREATION_ASSISTANT_PROMPT_1, SURVEY_CREATION_SYSTEM_PROMPT } from './prompt'
+import { SURVEY_CREATION_SYSTEM_PROMPT } from './prompt'
 
 export async function POST(request: Request) {
   const ip = getClientIP(request)
@@ -32,10 +32,6 @@ export async function POST(request: Request) {
       {
         role: 'system',
         content: SURVEY_CREATION_SYSTEM_PROMPT
-      },
-      {
-        role: 'assistant',
-        content: SURVEY_CREATION_ASSISTANT_PROMPT_1
       },
       {
         role: 'user',

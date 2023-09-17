@@ -11,8 +11,6 @@ type MultiChoiceProps = {
 }
 
 const MultiChoice = ({ choices, setChoices, setAnswer }: MultiChoiceProps) => {
-  if (choices === undefined) return <></>
-
   const [checkboxStates, setCheckboxStates] = useState<boolean[]>(choices.map(() => false))
 
   const handleChoiceChange = (index: number, newValue: string) => {

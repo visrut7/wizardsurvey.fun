@@ -3,6 +3,7 @@
 import { useRouter } from 'next/navigation'
 import React, { useState } from 'react'
 import { useAppContext } from '@/app/context/AppContext'
+import { QuestionType } from '@/app/models/types'
 
 const GenerateWithAi = () => {
   const router = useRouter()
@@ -26,8 +27,21 @@ const GenerateWithAi = () => {
       .trim()
       .split('\n')
       .map((question_and_type) => {
-        const [question, type] = question_and_type.split(',')
-        return { question: question.trim(), type: type.trim() }
+        let [question, type] = question_and_type.split(',')
+
+        question = question.trim().replaceAll('"', '')
+        type = type.trim()
+
+        if (type === 'multichoice' || type === 'singlechoice') {
+          const choices_string = question_and_type.split(',')[2]
+          const choices = choices_string.split('|')
+          return {
+            question: question,
+            type: type,
+            choices: choices.slice(1).map((choice) => choice.trim())
+          }
+        }
+        return { question: question, type: type }
       })
 
     setQuestions([...surveyQuestions])
