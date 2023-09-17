@@ -23,7 +23,7 @@ export default function CreateSurvey() {
     setName
   } = useAppContext()
 
-  const [isFinishLoading, setIsFinishLoading] = useState(false)
+  const [loading, setLoading] = useState(false)
   const [showError, setShowError] = useState(false)
 
   const goLeft = () => {
@@ -50,7 +50,7 @@ export default function CreateSurvey() {
       return
     }
 
-    setIsFinishLoading(true)
+    setLoading(true)
 
     const validQuestions = getValidQuestions(questions)
 
@@ -66,7 +66,7 @@ export default function CreateSurvey() {
       setShowError(true)
     }
 
-    setIsFinishLoading(false)
+    setLoading(false)
     // setShowError(false)
 
     const data = await res.json()
@@ -103,8 +103,8 @@ export default function CreateSurvey() {
         </button>
       </section>
       <footer className='flex justify-end p-4'>
-        <button className={`btn btn-primary`} onClick={submitSurvey}>
-          {isFinishLoading && <span className='loading loading-spinner'></span>} Finish
+        <button className={`btn btn-primary`} onClick={submitSurvey} disabled={loading}>
+          {loading && <span className='loading loading-spinner'></span>} Finish
         </button>
       </footer>
     </main>

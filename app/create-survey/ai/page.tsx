@@ -11,9 +11,13 @@ const GenerateWithAi = () => {
   const { setQuestions } = useAppContext()
 
   const [surveyDescription, setSurveyDescription] = useState('')
+  const [loading, setLoading] = useState(false)
 
   const generateUsingAi = async (event: React.FormEvent) => {
     event.preventDefault()
+
+    setLoading(true)
+
     const response = await fetch('ai/api', {
       method: 'POST',
       headers: {
@@ -45,6 +49,9 @@ const GenerateWithAi = () => {
       })
 
     setQuestions([...surveyQuestions])
+
+    setLoading(true)
+
     router.push('/create-survey')
   }
 
@@ -54,15 +61,16 @@ const GenerateWithAi = () => {
         Enter survey topic or description
       </label>
       <textarea
-        className='textarea w-96 h-64'
+        required
         autoFocus
+        className='textarea w-96 h-64'
         name='survey-description'
         id='survey-description'
         placeholder="Conducting a market research survey for a new fitness app. We want to understand people's fitness goals, preferred workout routines, and pain points in existing fitness apps. Our target audience is health-conscious individuals aged 18-45, both beginners and experienced fitness enthusiasts. The survey should help us design features that cater to their specific needs and preferences."
         onChange={(e) => setSurveyDescription(e.target.value)}
       />
-      <button type='submit' className='btn btn-primary'>
-        Let&apos;s Go
+      <button type='submit' className='btn btn-primary' disabled={loading}>
+        {loading && <span className='loading loading-spinner'></span>} Finish Let&apos;s Go
       </button>
     </form>
   )

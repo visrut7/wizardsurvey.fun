@@ -4,6 +4,8 @@ import clientPromise from '@/app/mongodb'
 import openai from '@/app/openai'
 import { SURVEY_CREATION_SYSTEM_PROMPT } from './prompt'
 
+const OPENAI_REQUEST_LIMIT = 10
+
 export async function POST(request: Request) {
   const ip = getClientIP(request)
 
@@ -18,7 +20,7 @@ export async function POST(request: Request) {
   } else {
     const prevCount = creatorHistory.count
 
-    if (prevCount >= 3) {
+    if (prevCount >= OPENAI_REQUEST_LIMIT) {
       return NextResponse.json({ error: 'API limit is reached to generate survey using OpenAI' }, { status: 429 })
     }
 
