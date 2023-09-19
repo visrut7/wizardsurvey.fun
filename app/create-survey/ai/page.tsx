@@ -3,7 +3,6 @@
 import { useRouter } from 'next/navigation'
 import React, { useState } from 'react'
 import { useAppContext } from '@/app/context/AppContext'
-import { QuestionType } from '@/app/models/types'
 
 const GenerateWithAi = () => {
   const router = useRouter()
@@ -18,7 +17,7 @@ const GenerateWithAi = () => {
 
     setLoading(true)
 
-    const response = await fetch('ai/api', {
+    const response = await fetch('https://wizard-survey-fun-api.onrender.com/', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
