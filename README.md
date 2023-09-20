@@ -39,3 +39,5 @@ To contribute to this project, please follow these steps:
 - [ ] Ability to view survey analytics.
 - [ ] Ability to export survey responses as CSV.
 - [ ] Ability to view survey responses as a chart.
+
+> Note: I need to deploy the OpenAI API separately because I have a Vercel hobby plan that encounters a request Gateway timeout error (504). Instead, I have deployed it on one of my AWS instances. Don't worry; it's only used for generating survey questions using OpenAI, and nothing else.
