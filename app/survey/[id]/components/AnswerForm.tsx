@@ -32,7 +32,7 @@ const AnswerForm = () => {
         {questions.map((question, index) => (
           <main
             key={index}
-            className={`absolute transform ${
+            className={`absolute transform h-1/2 flex flex-col justify-center gap-y-10 ${
               index === currentQuestionNumber
                 ? 'enter-center'
                 : index < currentQuestionNumber

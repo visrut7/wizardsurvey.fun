@@ -60,14 +60,14 @@ const MultiChoice = ({ choices, setChoices, setAnswer }: MultiChoiceProps) => {
               className='input'
             />
           </label>
-          {choices.length > 2 && (
+          {choices.length > 2 && !setAnswer && (
             <button type='button' onClick={() => handleRemoveChoice(idx)} className='button'>
               <IoRemoveCircleSharp className='text-red-500 text-2xl' />
             </button>
           )}
         </div>
       ))}
-      {choices.length < 6 && (
+      {choices.length < 6 && !setAnswer && (
         <button type='button' onClick={handleAddChoice} className='btn btn-success w-36 m-auto'>
           <BsPlusCircleFill className='text-xl' />
           Add
