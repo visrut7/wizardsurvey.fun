@@ -17,7 +17,7 @@ const GenerateWithAi = () => {
 
     setLoading(true)
 
-    const response = await fetch('https://13.53.158.170/', {
+    const response = await fetch('https://api.wizardsurvey.fun/', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
