@@ -18,6 +18,16 @@ export async function POST(request: Request) {
 
   const client = await clientPromise
   const db = client.db('survey-db')
+
+  const filledSurveys = await db.collection(id).countDocuments()
+
+  if (filledSurveys !== 0) {
+    const is_response_filled = await db.collection(id).findOne({ ip })
+    if (is_response_filled) {
+      return NextResponse.json({ error: 'We already got response from your IP.' }, { status: 422 })
+    }
+  }
+
   const survey = await db.collection(id).insertOne({ ip, answers })
 
   return NextResponse.json(survey, { status: 200 })
