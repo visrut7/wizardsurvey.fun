@@ -1,6 +1,7 @@
 import { Patrick_Hand } from 'next/font/google'
 import WizardSurvey from './icons/WizardSurvey'
 import Link from 'next/link'
+import Image from 'next/image'
 
 const patrickHand = Patrick_Hand({
   subsets: ['latin'],
@@ -32,7 +33,7 @@ export default function Home() {
           href='https://github.com/visrut-at-incubyte/wizardsurvey.fun'
           target='_blank'
         >
-          <img src='/github-mark.svg' width={20} height={30} alt='' />
+          <Image src='/github-mark.svg' width={20} height={30} alt='' />
           <span>Source Code</span>
         </Link>
       </section>

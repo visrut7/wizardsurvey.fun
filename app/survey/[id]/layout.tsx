@@ -1,12 +1,10 @@
 import { AppProvider } from '@/app/context/AppContext'
 import { Metadata, ResolvingMetadata } from 'next'
 
-type Props = {
-  params: { id: string }
-  searchParams: { [key: string]: string | string[] | undefined }
-}
-
-export async function generateMetadata({ params, searchParams }: Props, parent: ResolvingMetadata): Promise<Metadata> {
+export async function generateMetadata(
+  { params }: { params: { id: string } },
+  parent: ResolvingMetadata
+): Promise<Metadata> {
   const id = params.id
 
   const survey = await fetch(`http://localhost:3000/survey/${id}/api`).then((res) => res.json())
