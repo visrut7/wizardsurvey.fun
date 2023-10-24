@@ -33,7 +33,7 @@ To contribute to this project, please follow these steps:
 ## Features
 
 - [x] Ability to create a survey manually.
-- [ ] Ability to create a survey using OpenAI
+- [x] Ability to create a survey using OpenAI
 - [x] Ability to share the survey with a link.
 - [ ] Ability to submit survey responses.
 - [ ] Ability to view survey analytics.
