@@ -1,3 +1,4 @@
+import { server } from '@/app/config'
 import { AppProvider } from '@/app/context/AppContext'
 import { Metadata, ResolvingMetadata } from 'next'
 
@@ -7,7 +8,7 @@ export async function generateMetadata(
 ): Promise<Metadata> {
   const id = params.id
 
-  const survey = await fetch(`http://localhost:3000/survey/${id}/api`).then((res) => res.json())
+  const survey = await fetch(`${server}/survey/${id}/api`).then((res) => res.json())
 
   const previousImages = (await parent).openGraph?.images || []
 
