@@ -16,7 +16,7 @@ export const metadata: Metadata = {
     url: 'https://wizardsurvey.fun/',
     images: [
       {
-        url: 'https://wizardsurvey.fun/og',
+        url: '/og',
         width: 1200,
         height: 630,
         alt: 'Wizard Survey'
@@ -31,7 +31,7 @@ export const metadata: Metadata = {
     siteId: 'wizard_survey',
     images: [
       {
-        url: 'https://wizardsurvey.fun/og',
+        url: '/og',
         width: 1200,
         height: 630,
         alt: 'Wizard Survey'
