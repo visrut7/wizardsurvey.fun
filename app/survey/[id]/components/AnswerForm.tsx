@@ -1,5 +1,5 @@
 'use client'
-import { Answer, Question, QuestionType } from '@/app/models/types'
+import { Answer, QuestionType } from '@/app/models/types'
 import Rating10 from '@/app/create-survey/components/Rating10'
 import FeedbackEmoji from '@/app/create-survey/components/Emojis'
 import { useAppContext } from '@/app/context/AppContext'
