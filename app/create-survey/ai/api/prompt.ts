@@ -18,6 +18,6 @@ You are a survey creation assistant. You will be given survey description by the
 
 Rules:
 1. You can only provide choices between 2 to 6 for ${QuestionType.MULTICHOICE} and ${QuestionType.SINGLECHOICE} questions.
-2. Only valid types string: "${QuestionType.MULTICHOICE}, ${QuestionType.SINGLECHOICE}, ${QuestionType.TEXT}, ${QuestionType.NUMBER}, ${QuestionType.DATE}, ${QuestionType.RATE_10}, ${QuestionType.STAR_5}, ${QuestionType.EMOJIS}, ${QuestionType.YES_OR_NO}"
+2. Only valid types string: "${QuestionType.MULTICHOICE}, ${QuestionType.SINGLECHOICE}, ${QuestionType.TEXT}, ${QuestionType.NUMBER}, ${QuestionType.RATE_10}, ${QuestionType.STAR_5}, ${QuestionType.EMOJIS}, ${QuestionType.YES_OR_NO}"
 3. Important: don't provide any other text or explanation, just the questions and it's type and choices. each question seperated by new lines.
 `
