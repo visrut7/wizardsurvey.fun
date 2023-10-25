@@ -1,5 +1,6 @@
 import clientPromise from '@/app/mongodb'
 import { getClientIP } from '@/app/utils'
+import { StatusCodes } from 'http-status-codes'
 import { NextResponse } from 'next/server'
 
 export async function GET(request: Request, { params }: { params: { id: string } }) {
@@ -9,7 +10,7 @@ export async function GET(request: Request, { params }: { params: { id: string }
   const db = client.db('survey-db')
   const survey = await db.collection('survey-templates').findOne({ uuid: surveyId })
 
-  return NextResponse.json(survey, { status: 200 })
+  return NextResponse.json(survey, { status: StatusCodes.OK })
 }
 
 export async function POST(request: Request) {
@@ -24,11 +25,14 @@ export async function POST(request: Request) {
   if (filledSurveys !== 0) {
     const is_response_filled = await db.collection(id).findOne({ ip })
     if (is_response_filled) {
-      return NextResponse.json({ error: 'We already got response from your IP.' }, { status: 422 })
+      return NextResponse.json(
+        { error: 'We already got response from your IP.' },
+        { status: StatusCodes.UNPROCESSABLE_ENTITY }
+      )
     }
   }
 
   const survey = await db.collection(id).insertOne({ ip, answers })
 
-  return NextResponse.json(survey, { status: 200 })
+  return NextResponse.json(survey, { status: StatusCodes.OK })
 }

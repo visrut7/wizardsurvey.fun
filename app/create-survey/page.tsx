@@ -8,6 +8,7 @@ import { useAppContext } from '../context/AppContext'
 import { useRouter } from 'next/navigation'
 import { useState } from 'react'
 import Toast from '../components/Toast'
+import { StatusCodes } from 'http-status-codes'
 
 export default function CreateSurvey() {
   const router = useRouter()
@@ -62,7 +63,7 @@ export default function CreateSurvey() {
       })
     })
 
-    if (res.status === 429) {
+    if (res.status === StatusCodes.TOO_MANY_REQUESTS) {
       setShowError(true)
     }
 

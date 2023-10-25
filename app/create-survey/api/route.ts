@@ -2,6 +2,7 @@ import { NextResponse } from 'next/server'
 import { getClientIP } from '@/app/utils'
 import clientPromise from '@/app/mongodb'
 import { SurveyDatabase } from '@/app/database'
+import { StatusCodes } from 'http-status-codes'
 
 export async function POST(request: Request) {
   const ip = getClientIP(request)
@@ -13,8 +14,8 @@ export async function POST(request: Request) {
 
   try {
     const uuid: string = await database.createSurvey(ip!, await request.json())
-    return NextResponse.json({ 'survey-id': uuid }, { status: 201 })
+    return NextResponse.json({ 'survey-id': uuid }, { status: StatusCodes.CREATED })
   } catch (error) {
-    return NextResponse.json({ error: (error as any).message }, { status: 429 })
+    return NextResponse.json({ error: (error as any).message }, { status: StatusCodes.TOO_MANY_REQUESTS })
   }
 }

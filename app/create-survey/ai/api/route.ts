@@ -3,6 +3,7 @@ import { createHash, getClientIP } from '@/app/utils'
 import clientPromise from '@/app/mongodb'
 import openai from '@/app/openai'
 import { SURVEY_CREATION_SYSTEM_PROMPT } from './prompt'
+import { StatusCodes } from 'http-status-codes'
 
 const OPENAI_REQUEST_LIMIT = 10
 
@@ -21,7 +22,10 @@ export async function POST(request: Request) {
     const prevCount = creatorHistory.count
 
     if (prevCount >= OPENAI_REQUEST_LIMIT) {
-      return NextResponse.json({ error: 'API limit is reached to generate survey using OpenAI' }, { status: 429 })
+      return NextResponse.json(
+        { error: 'API limit is reached to generate survey using OpenAI' },
+        { status: StatusCodes.TOO_MANY_REQUESTS }
+      )
     }
 
     await db.collection('open-ai-limit').updateOne({ ipHash: hash }, { $set: { count: prevCount + 1 } })
@@ -45,5 +49,5 @@ export async function POST(request: Request) {
     temperature: 0.0
   })
 
-  return NextResponse.json({ survey: response.choices[0].message.content }, { status: 201 })
+  return NextResponse.json({ survey: response.choices[0].message.content }, { status: StatusCodes.CREATED })
 }
