@@ -1,5 +1,5 @@
 'use client'
-import { useEffect } from 'react'
+import { useCallback, useEffect } from 'react'
 import AnswerForm from './components/AnswerForm'
 import LoadingSpinner from '@/app/components/LoadingSpinner'
 import { useAppContext } from '@/app/context/AppContext'
@@ -8,15 +8,14 @@ import { Answer } from '@/app/models/types'
 export default function FillSurvey({ params }: { params: { id: string } }) {
   const { setName, setQuestions, questions, name } = useAppContext()
 
-  const getSurvey = async () => {
+  const getSurvey = useCallback(async () => {
     const res = await fetch(`/survey/${params.id}/api`)
     const data = await res.json()
     setName(data.surveyName)
     setQuestions([...data.questions])
-  }
+  }, [params.id, setName, setQuestions])
 
   const submitSurvey = async (answers: Answer[]) => {
-    console.log('submitting survey....')
     const res = await fetch(`/survey/${params.id}/api`, {
       method: 'POST',
       headers: {
@@ -33,7 +32,7 @@ export default function FillSurvey({ params }: { params: { id: string } }) {
 
   useEffect(() => {
     getSurvey()
-  }, [])
+  }, [getSurvey])
 
   if (questions.length === 0) return <LoadingSpinner />
 
