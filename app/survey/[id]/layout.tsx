@@ -12,17 +12,18 @@ export async function generateMetadata(
 
   const previousImages = (await parent).openGraph?.images || []
 
+  const openGraphTags = {
+    title: `WizardSurvey.fun: ${survey.surveyName}`,
+    description: `A Survey on ${survey.surveyName} for ${survey.questions.length} questions.`,
+    images: [
+      { url: `/survey/${id}/og?title=${survey.surveyName}`, width: 1200, height: 630, alt: 'Wizard Survey' },
+      ...previousImages
+    ]
+  }
+
   return {
-    openGraph: {
-      title: `WizardSurvey.fun: ${survey.surveyName}`,
-      description: `A Survey on ${survey.surveyName} for ${survey.questions.length} questions.`,
-      images: [`/survey/${id}/og?title=${survey.surveyName}`, ...previousImages]
-    },
-    twitter: {
-      title: `WizardSurvey.fun: ${survey.surveyName}`,
-      description: `A Survey on ${survey.surveyName} for ${survey.questions.length} questions.`,
-      images: [`/survey/${id}/og?title=${survey.surveyName}`, ...previousImages]
-    }
+    openGraph: { ...openGraphTags },
+    twitter: { ...openGraphTags, card: 'summary_large_image' }
   }
 }
 

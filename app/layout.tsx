@@ -4,39 +4,34 @@ import { Inter } from 'next/font/google'
 
 const inter = Inter({ subsets: ['latin'] })
 
+const openGraphTags = {
+  title: 'Create Survey using OpenAI',
+  images: [
+    {
+      url: '/og',
+      width: 1200,
+      height: 630,
+      alt: 'Wizard Survey'
+    }
+  ],
+  description: 'A survey taker powered by OpenAI'
+}
+
 export const metadata: Metadata = {
   title: 'Wizard Survey',
   description: 'A survey taker powered by OpenAI',
   openGraph: {
+    ...openGraphTags,
     type: 'website',
     siteName: 'Wizard Survey',
-    title: 'Create Survey using OpenAI',
-    description: 'A survey taker powered by OpenAI',
     locale: 'en_US',
-    url: 'https://wizardsurvey.fun/',
-    images: [
-      {
-        url: '/og',
-        width: 1200,
-        height: 630,
-        alt: 'Wizard Survey'
-      }
-    ]
+    url: 'https://wizardsurvey.fun/'
   },
   twitter: {
+    ...openGraphTags,
     site: '@wizard_survey',
     card: 'summary_large_image',
-    description: 'A survey taker powered by OpenAI',
-    title: 'Create Survey using OpenAI',
     siteId: 'wizard_survey',
-    images: [
-      {
-        url: '/og',
-        width: 1200,
-        height: 630,
-        alt: 'Wizard Survey'
-      }
-    ],
     creatorId: 'visrut06815925',
     creator: '@visrut06815925'
   }
