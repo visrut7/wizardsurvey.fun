@@ -3,7 +3,7 @@ import { useCallback, useEffect } from 'react'
 import AnswerForm from './components/AnswerForm'
 import LoadingSpinner from '@/app/components/LoadingSpinner'
 import { useAppContext } from '@/app/context/AppContext'
-import { Answer } from '@/app/models/types'
+import { Answer, QuestionType } from '@/app/models/types'
 
 export default function FillSurvey({ params }: { params: { id: string } }) {
   const { setName, setQuestions, questions, name } = useAppContext()
@@ -34,7 +34,7 @@ export default function FillSurvey({ params }: { params: { id: string } }) {
     getSurvey()
   }, [getSurvey])
 
-  if (questions.length === 0) return <LoadingSpinner />
+  if (questions.length === 0 || questions[0].type == QuestionType.NOT_DECIDED) return <LoadingSpinner />
 
   return (
     <main className='flex flex-col h-screen text-white'>

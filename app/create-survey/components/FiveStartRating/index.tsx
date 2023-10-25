@@ -18,15 +18,18 @@ const FiveStarRating = ({ setAnswer }: QuestionUiProps) => {
     <div className='container flex justify-center w-full'>
       <div className='star-rating flex gap-x-5'>
         {Array.from({ length: 5 }).map((_, index) => (
-          <span
+          <button
             key={index}
             className={`star ${rating && rating > index ? 'filled' : ''}`}
-            onClick={() => handleStarClick(index)}
+            onClick={(event) => {
+              event.preventDefault()
+              handleStarClick(index)
+            }}
           >
             <BsStarFill
               className={`text-5xl cursor-pointer ${rating && rating > index ? 'text-orange-400' : 'text-white'}`}
             />
-          </span>
+          </button>
         ))}
       </div>
     </div>
