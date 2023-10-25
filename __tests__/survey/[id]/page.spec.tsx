@@ -4,6 +4,8 @@ import { QuestionType } from '@/app/models/types'
 import React from 'react'
 import { AppProvider } from '@/app/context/AppContext'
 import { act } from 'react-dom/test-utils'
+import { AppRouterContext, AppRouterInstance } from 'next/dist/shared/lib/app-router-context'
+import mockRouter from 'next-router-mock'
 
 describe('Fill Survey', () => {
   beforeAll(() => {
@@ -28,9 +30,11 @@ describe('Fill Survey', () => {
 
   it('should renders a all questions for survey', async () => {
     render(
-      <AppProvider>
-        <FillSurvey params={{ id: '123' }} />
-      </AppProvider>
+      <AppRouterContext.Provider value={mockRouter as any}>
+        <AppProvider>
+          <FillSurvey params={{ id: '123' }} />
+        </AppProvider>
+      </AppRouterContext.Provider>
     )
 
     await waitFor(() => expect(screen.getByText('Test Survey 1')).toBeInTheDocument())
