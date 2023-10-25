@@ -34,5 +34,5 @@ export async function POST(request: Request) {
 
   const survey = await db.collection(id).insertOne({ ip, answers })
 
-  return NextResponse.json(survey, { status: StatusCodes.OK })
+  return NextResponse.json(survey, { status: StatusCodes.ACCEPTED })
 }

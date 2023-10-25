@@ -1,12 +1,17 @@
 'use client'
-import { useCallback, useEffect } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import AnswerForm from './components/AnswerForm'
 import LoadingSpinner from '@/app/components/LoadingSpinner'
 import { useAppContext } from '@/app/context/AppContext'
 import { Answer, QuestionType } from '@/app/models/types'
+import { StatusCodes } from 'http-status-codes'
+import { useRouter, usePathname } from 'next/navigation'
 
 export default function FillSurvey({ params }: { params: { id: string } }) {
   const { setName, setQuestions, questions, name } = useAppContext()
+  const [error, setError] = useState('')
+  const router = useRouter()
+  const pathname = usePathname()
 
   const getSurvey = useCallback(async () => {
     const res = await fetch(`/survey/${params.id}/api`)
@@ -27,7 +32,14 @@ export default function FillSurvey({ params }: { params: { id: string } }) {
       })
     })
     const data = await res.json()
-    console.log(data)
+
+    if (res.status === StatusCodes.ACCEPTED) {
+      router.push(pathname + '/results')
+    }
+
+    if (res.status === StatusCodes.UNPROCESSABLE_ENTITY) {
+      setError(data.error)
+    }
   }
 
   useEffect(() => {
@@ -41,8 +53,9 @@ export default function FillSurvey({ params }: { params: { id: string } }) {
       <nav className='flex justify-center p-3'>
         <h1 className='text-2xl'>{name}</h1>
       </nav>
-      <section className='flex flex-col justify-between items-center h-full'>
-        <AnswerForm submitSurvey={submitSurvey} />
+      <section className='flex flex-col justify-center items-center h-full'>
+        {!error && <AnswerForm submitSurvey={submitSurvey} />}
+        {error && <h1 className='text-3xl text-red-400'>{error}</h1>}
       </section>
     </main>
   )
