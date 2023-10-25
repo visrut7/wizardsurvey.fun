@@ -52,7 +52,7 @@ export async function GET(request: Request) {
               whiteSpace: 'pre-wrap'
             }}
           >
-            {`WizardSurvey.fun: ${title}`}
+            {`Wizard Survey: ${title}`}
           </div>
         </div>
       ),
