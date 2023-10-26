@@ -35,8 +35,7 @@ export default function FillSurvey({ params }: { params: { id: string } }) {
     const data = await res.json()
 
     if (res.status === StatusCodes.ACCEPTED) {
-      console.log(data)
-      // router.push(pathname + '/results')
+      router.push(pathname + '/results')
     }
 
     if (res.status === StatusCodes.UNPROCESSABLE_ENTITY) {
