@@ -50,3 +50,7 @@ button[disabled='disabled'],
 button:disabled {
   @apply bg-blue-400;
 }
+
+progress[value]::-webkit-progress-value {
+  transition: width 0.5s;
+}

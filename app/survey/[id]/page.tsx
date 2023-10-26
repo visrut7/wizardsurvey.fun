@@ -1,5 +1,5 @@
 'use client'
-import { useCallback, useEffect, useState } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 import AnswerForm from './components/AnswerForm'
 import LoadingSpinner from '@/app/components/LoadingSpinner'
 import { useAppContext } from '@/app/context/AppContext'
@@ -8,10 +8,11 @@ import { StatusCodes } from 'http-status-codes'
 import { useRouter, usePathname } from 'next/navigation'
 
 export default function FillSurvey({ params }: { params: { id: string } }) {
-  const { setName, setQuestions, questions, name } = useAppContext()
+  const { setName, setQuestions, questions, name, currentQuestionNumber } = useAppContext()
   const [error, setError] = useState('')
   const router = useRouter()
   const pathname = usePathname()
+  const progressBarRef = useRef<HTMLProgressElement>(null)
 
   const getSurvey = useCallback(async () => {
     const res = await fetch(`/survey/${params.id}/api`)
@@ -34,7 +35,8 @@ export default function FillSurvey({ params }: { params: { id: string } }) {
     const data = await res.json()
 
     if (res.status === StatusCodes.ACCEPTED) {
-      router.push(pathname + '/results')
+      console.log(data)
+      // router.push(pathname + '/results')
     }
 
     if (res.status === StatusCodes.UNPROCESSABLE_ENTITY) {
@@ -57,6 +59,7 @@ export default function FillSurvey({ params }: { params: { id: string } }) {
         {!error && <AnswerForm submitSurvey={submitSurvey} />}
         {error && <h1 className='text-3xl text-red-400'>{error}</h1>}
       </section>
+      <progress className='progress progress-success w-full' value={currentQuestionNumber * 10} max='100'></progress>
     </main>
   )
 }

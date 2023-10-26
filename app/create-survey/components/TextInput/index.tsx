@@ -4,6 +4,7 @@ import { useState } from 'react'
 import { QuestionUiProps } from '../props'
 
 const TextInput = ({ setAnswer }: QuestionUiProps) => {
+  const [disabledNext, setDisableNext] = useState<boolean>(false)
   const [text, setText] = useState<string>('')
 
   return (
@@ -18,10 +19,12 @@ const TextInput = ({ setAnswer }: QuestionUiProps) => {
       <button
         onClick={(e) => {
           e.preventDefault()
+          setDisableNext(true)
           setAnswer && setAnswer(text)
         }}
         className='btn btn-primary self-end my-5'
         style={{ width: '70px' }}
+        disabled={disabledNext}
       >
         Next
       </button>

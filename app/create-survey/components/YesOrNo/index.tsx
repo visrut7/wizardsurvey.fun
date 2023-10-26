@@ -7,10 +7,7 @@ type YesOrNoProps = {
 }
 
 const YesOrNo = ({ choices, setAnswer }: YesOrNoProps) => {
-  const [selectedChoice, setSelectedChoice] = useState<string>('')
-
   const handleChoiceChange = (choice: string) => {
-    setSelectedChoice(choice)
     setAnswer && setAnswer(choice)
   }
 
@@ -25,7 +22,6 @@ const YesOrNo = ({ choices, setAnswer }: YesOrNoProps) => {
               name='choice'
               id={`${choice}-${idx}`}
               className='radio radio-info w-8 h-8'
-              checked={selectedChoice === choice}
               onChange={() => handleChoiceChange(choice)}
             />
             <span>{choice}</span>
