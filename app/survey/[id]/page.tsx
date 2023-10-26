@@ -1,5 +1,5 @@
 'use client'
-import { useCallback, useEffect, useRef, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import AnswerForm from './components/AnswerForm'
 import LoadingSpinner from '@/app/components/LoadingSpinner'
 import { useAppContext } from '@/app/context/AppContext'
@@ -12,7 +12,6 @@ export default function FillSurvey({ params }: { params: { id: string } }) {
   const [error, setError] = useState('')
   const router = useRouter()
   const pathname = usePathname()
-  const progressBarRef = useRef<HTMLProgressElement>(null)
 
   const getSurvey = useCallback(async () => {
     const res = await fetch(`/survey/${params.id}/api`)
