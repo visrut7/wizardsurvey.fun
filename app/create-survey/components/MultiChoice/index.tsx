@@ -11,7 +11,7 @@ type MultiChoiceProps = {
 }
 
 const MultiChoice = ({ choices, setChoices, setAnswer }: MultiChoiceProps) => {
-  const [disabledNext, setDisableNext] = useState<boolean>(false)
+  const [disabledNext, setDisabledNext] = useState<boolean>(false)
   const [checkboxStates, setCheckboxStates] = useState<boolean[]>(choices.map(() => false))
 
   const handleChoiceChange = (index: number, newValue: string) => {
@@ -77,7 +77,7 @@ const MultiChoice = ({ choices, setChoices, setAnswer }: MultiChoiceProps) => {
       <button
         onClick={(e) => {
           e.preventDefault()
-          setDisableNext(true)
+          setDisabledNext(true)
           setAnswer && setAnswer(choices.filter((_, i) => checkboxStates[i]))
         }}
         className='btn btn-primary ml-auto mr-5'
