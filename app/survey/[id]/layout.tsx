@@ -14,7 +14,9 @@ export async function generateMetadata(
 
   const openGraphTags = {
     title: `Wizard Survey: ${survey.surveyName}`,
-    description: `A Survey on ${survey.surveyName} for ${survey.questions.length} questions.`,
+    description: `A Survey on ${survey.surveyName} for ${survey.questions.length} question${
+      survey.questions.length > 1 ? 's' : ''
+    }.`,
     images: [
       { url: `/survey/${id}/og?title=${survey.surveyName}`, width: 1200, height: 630, alt: 'Wizard Survey' },
       ...previousImages
@@ -23,7 +25,8 @@ export async function generateMetadata(
 
   return {
     openGraph: { ...openGraphTags },
-    twitter: { ...openGraphTags, card: 'summary_large_image' }
+    twitter: { ...openGraphTags, card: 'summary_large_image' },
+    title: `A survey on ${survey.surveyName} | WizardSurvey.fun`
   }
 }
 
