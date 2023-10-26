@@ -7,7 +7,10 @@ type YesOrNoProps = {
 }
 
 const YesOrNo = ({ choices, setAnswer }: YesOrNoProps) => {
+  const [disableAllRadios, setDisableAllRadios] = useState(false)
+
   const handleChoiceChange = (choice: string) => {
+    setAnswer && setDisableAllRadios(true)
     setAnswer && setAnswer(choice)
   }
 
@@ -23,6 +26,7 @@ const YesOrNo = ({ choices, setAnswer }: YesOrNoProps) => {
               id={`${choice}-${idx}`}
               className='radio radio-info w-8 h-8'
               onChange={() => handleChoiceChange(choice)}
+              disabled={disableAllRadios}
             />
             <span>{choice}</span>
           </label>

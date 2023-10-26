@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { IoRemoveCircleSharp } from 'react-icons/io5'
 import { Answer } from '@/app/models/types'
 import { BsPlusCircleFill } from 'react-icons/bs'
@@ -10,6 +10,8 @@ type SingleChoiceProps = {
 }
 
 const SingleChoice = ({ choices, setChoices, setAnswer }: SingleChoiceProps) => {
+  const [disableAllRadios, setDisableAllRadios] = useState(false)
+
   const handleChoiceChange = (index: number, newValue: string) => {
     const updatedChoices = [...choices]
     updatedChoices[index] = newValue
@@ -37,6 +39,7 @@ const SingleChoice = ({ choices, setChoices, setAnswer }: SingleChoiceProps) => 
           <label className='flex items-center gap-x-6 px-8'>
             <input
               onChange={() => {
+                setAnswer && setDisableAllRadios(true)
                 setAnswer && setAnswer(choice)
               }}
               type='radio'
@@ -44,6 +47,7 @@ const SingleChoice = ({ choices, setChoices, setAnswer }: SingleChoiceProps) => 
               name='choice'
               id={`${choice}-${idx}`}
               className='radio radio-info w-8 h-8'
+              disabled={disableAllRadios}
             />
             <input
               type='text'

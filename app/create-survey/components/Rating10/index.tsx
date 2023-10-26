@@ -7,11 +7,13 @@ type Rating10Props = {
 }
 
 export const Rating10: React.FC<Rating10Props> = ({ setAnswer }) => {
+  const [disableAllRadios, setDisableAllRadios] = useState(false)
   const [selectedRating, setSelectedRating] = useState<string | null>(null)
 
   const handleRatingChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const newRating = event.target.value
     setSelectedRating(newRating)
+    setAnswer && setDisableAllRadios(true)
     setAnswer && setAnswer(newRating) // Set the answer when a rating is selected
   }
 
@@ -27,6 +29,7 @@ export const Rating10: React.FC<Rating10Props> = ({ setAnswer }) => {
             className='rating-input'
             checked={selectedRating === ratingValue.toString()}
             onChange={handleRatingChange}
+            disabled={disableAllRadios}
           />
           <label htmlFor={`rating-${ratingValue}`} className='rating-circle'>
             {/* Empty circle */}
