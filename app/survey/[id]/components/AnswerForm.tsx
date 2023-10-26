@@ -44,7 +44,7 @@ const AnswerForm = ({ submitSurvey }: { submitSurvey: Function }) => {
                 : 'start-right'
             }`}
           >
-            <h1 className='text-4xl'>{question.question}</h1>
+            <h1 className='text-center sm:text-xl md:text-3xl'>{question.question}</h1>
             {question.type === QuestionType.RATE_10 && <Rating10 setAnswer={setAnswer} />}
             {question.type === QuestionType.STAR_5 && <FiveStarRating setAnswer={setAnswer} />}
             {question.type === QuestionType.SINGLECHOICE && (
