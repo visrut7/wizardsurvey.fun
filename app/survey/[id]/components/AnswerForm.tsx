@@ -31,36 +31,34 @@ const AnswerForm = ({ submitSurvey }: { submitSurvey: Function }) => {
   }
 
   return (
-    <>
-      <form className='h-full w-full flex flex-col justify-center gap-y-10 items-center'>
-        {questions.map((question, index) => (
-          <main
-            key={index}
-            className={`absolute transform h-1/2 flex flex-col justify-center gap-y-10 ${
-              index === currentQuestionNumber
-                ? 'enter-center'
-                : index < currentQuestionNumber
-                ? 'exit-left'
-                : 'start-right'
-            }`}
-          >
-            <h1 className='text-center sm:text-xl md:text-3xl'>{question.question}</h1>
-            {question.type === QuestionType.RATE_10 && <Rating10 setAnswer={setAnswer} />}
-            {question.type === QuestionType.STAR_5 && <FiveStarRating setAnswer={setAnswer} />}
-            {question.type === QuestionType.SINGLECHOICE && (
-              <SingleChoice choices={question.choices!} setChoices={() => {}} setAnswer={setAnswer} />
-            )}
-            {question.type === QuestionType.MULTICHOICE && (
-              <MultiChoice choices={question.choices!} setChoices={() => {}} setAnswer={setAnswer} />
-            )}
-            {question.type === QuestionType.EMOJIS && <FeedbackEmoji setAnswer={setAnswer} />}
-            {question.type === QuestionType.NUMBER && <NumberInput setAnswer={setAnswer} />}
-            {question.type === QuestionType.TEXT && <TextInput setAnswer={setAnswer} />}
-            {question.type === QuestionType.YES_OR_NO && <YesOrNo choices={['yes', 'no']} setAnswer={setAnswer} />}
-          </main>
-        ))}
-      </form>
-    </>
+    <form className='flex flex-col justify-center items-center gap-y-10 fixed'>
+      {questions.map((question, index) => (
+        <main
+          key={index}
+          className={`absolute transform h-1/2 flex flex-col justify-center gap-y-10 ${
+            index === currentQuestionNumber
+              ? 'enter-center'
+              : index < currentQuestionNumber
+              ? 'exit-left'
+              : 'start-right'
+          }`}
+        >
+          <h1 className='text-center sm:text-xl md:text-3xl'>{question.question}</h1>
+          {question.type === QuestionType.RATE_10 && <Rating10 setAnswer={setAnswer} />}
+          {question.type === QuestionType.STAR_5 && <FiveStarRating setAnswer={setAnswer} />}
+          {question.type === QuestionType.SINGLECHOICE && (
+            <SingleChoice choices={question.choices!} setChoices={() => {}} setAnswer={setAnswer} />
+          )}
+          {question.type === QuestionType.MULTICHOICE && (
+            <MultiChoice choices={question.choices!} setChoices={() => {}} setAnswer={setAnswer} />
+          )}
+          {question.type === QuestionType.EMOJIS && <FeedbackEmoji setAnswer={setAnswer} />}
+          {question.type === QuestionType.NUMBER && <NumberInput setAnswer={setAnswer} />}
+          {question.type === QuestionType.TEXT && <TextInput setAnswer={setAnswer} />}
+          {question.type === QuestionType.YES_OR_NO && <YesOrNo choices={['yes', 'no']} setAnswer={setAnswer} />}
+        </main>
+      ))}
+    </form>
   )
 }
 
