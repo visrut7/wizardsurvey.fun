@@ -57,7 +57,11 @@ export default function FillSurvey({ params }: { params: { id: string } }) {
         {!error && <AnswerForm submitSurvey={submitSurvey} />}
         {error && <h1 className='text-3xl text-red-400'>{error}</h1>}
       </section>
-      <progress className='progress progress-success w-full' value={currentQuestionNumber * 10} max='100'></progress>
+      <progress
+        className='progress progress-success w-full'
+        value={currentQuestionNumber}
+        max={questions.length}
+      ></progress>
     </main>
   )
 }

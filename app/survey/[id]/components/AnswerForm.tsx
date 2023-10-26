@@ -60,7 +60,6 @@ const AnswerForm = ({ submitSurvey }: { submitSurvey: Function }) => {
           </main>
         ))}
       </form>
-      <span className='w-full h-52'>{/* Progress bar */}</span>
     </>
   )
 }
