@@ -17,7 +17,7 @@ export function getClientIP(request: Request): string | undefined {
 
 export function createHash(data: string): string {
   const sha256 = crypto.createHmac('sha256', process.env.SALT!)
-  const ipHash = sha256.update(data!)
+  const ipHash = sha256.update(data)
   const ipHashDigest = ipHash.digest('hex')
   return ipHashDigest
 }

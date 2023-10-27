@@ -24,8 +24,8 @@ export async function GET() {
         />
         <defs>
           <linearGradient id='paint0_linear_23_2' x1='600' y1='0' x2='600' y2='630' gradientUnits='userSpaceOnUse'>
-            <stop stop-color='#47026B' />
-            <stop offset='1' stop-color='#010D40' />
+            <stop stopColor='#47026B' />
+            <stop offset='1' stopColor='#010D40' />
           </linearGradient>
         </defs>
       </svg>

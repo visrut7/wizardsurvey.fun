@@ -14,13 +14,13 @@ const FeedbackEmoji = ({ setAnswer }: QuestionUiProps) => {
   return (
     <div className='feedback-emoji'>
       {emojis.map((emoji, index) => (
-        <span
+        <button
           key={index}
           className={`emoji ${selectedEmoji === emoji ? 'selected' : ''}`}
           onClick={() => handleEmojiClick(emoji)}
         >
           {emoji}
-        </span>
+        </button>
       ))}
     </div>
   )
