@@ -4,7 +4,7 @@ import { QuestionType } from '@/app/models/types'
 import React from 'react'
 import { AppProvider } from '@/app/context/AppContext'
 import { act } from 'react-dom/test-utils'
-import { AppRouterContext } from 'next/dist/shared/lib/app-router-context'
+import { AppRouterContext } from 'next/dist/shared/lib/app-router-context.shared-runtime'
 import mockRouter from 'next-router-mock'
 
 describe('Fill Survey', () => {
