@@ -37,7 +37,7 @@ describe('Fill Survey', () => {
       </AppRouterContext.Provider>
     )
 
-    await waitFor(() => expect(screen.getByText('Test Survey 1')).toBeInTheDocument())
+    await screen.findByText('Test Survey 1')
 
     const question1 = screen.getByText('Test question 1')
     expect(question1).toBeInTheDocument()
