@@ -58,3 +58,7 @@ button:disabled {
 progress[value]::-webkit-progress-value {
   transition: width 0.5s;
 }
+
+footer {
+  margin-bottom: env(safe-area-inset-bottom);
+}
