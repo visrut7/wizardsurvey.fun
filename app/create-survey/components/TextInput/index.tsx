@@ -12,7 +12,7 @@ const TextInput = ({ setAnswer }: QuestionUiProps) => {
       <input
         onChange={(e) => setText(e.target.value)}
         value={text}
-        className='input ml-8'
+        className='input'
         type='text'
         placeholder='Your Text'
       ></input>

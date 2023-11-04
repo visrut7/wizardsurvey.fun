@@ -12,7 +12,7 @@ const NumberInput = ({ setAnswer }: QuestionUiProps) => {
       <input
         onChange={(e) => setSelectedNumber(parseInt(e.target.value))}
         value={selectedNumber}
-        className='input ml-8'
+        className='input'
         type='number'
         placeholder='Ex: 37'
       ></input>

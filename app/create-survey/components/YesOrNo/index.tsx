@@ -15,7 +15,7 @@ const YesOrNo = ({ choices, setAnswer }: YesOrNoProps) => {
   }
 
   return (
-    <div className='flex flex-row justify-center items-center ml-10 mt-5 gap-x-12'>
+    <div className='flex flex-row justify-center items-center mt-5 gap-x-12'>
       {choices.map((choice, idx) => (
         <div key={idx} className='flex justify-between'>
           <label className='flex items-center gap-x-2 capitalize'>

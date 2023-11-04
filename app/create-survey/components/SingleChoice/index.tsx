@@ -46,14 +46,14 @@ const SingleChoice = ({ choices, setChoices, setAnswer }: SingleChoiceProps) => 
               value={choice}
               name='choice'
               id={`${choice}-${idx}`}
-              className='radio radio-info w-8 h-8'
+              className='radio radio-sm md:radio-lg radio-info'
               disabled={disableAllRadios}
             />
             <input
               type='text'
               value={choice}
               onChange={(e) => handleChoiceChange(idx, e.target.value)}
-              className='input w-full'
+              className='input input-sm md:input-md w-full'
             />
           </label>
           {choices.length > 2 && !setAnswer && (

@@ -52,13 +52,13 @@ const MultiChoice = ({ choices, setChoices, setAnswer }: MultiChoiceProps) => {
               type='checkbox'
               checked={checkboxStates[idx]}
               onChange={() => handleCheckboxChange(idx)}
-              className='checkbox checkbox-primary checkbox-input'
+              className='checkbox checkbox-md md:checkbox-lg checkbox-primary checkbox-input'
             />
             <input
               type='text'
               value={choice}
               onChange={(e) => handleChoiceChange(idx, e.target.value)}
-              className='input'
+              className='input input-sm md:input-md'
             />
           </label>
           {choices.length > 2 && !setAnswer && (
