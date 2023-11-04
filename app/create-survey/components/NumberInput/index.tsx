@@ -22,8 +22,7 @@ const NumberInput = ({ setAnswer }: QuestionUiProps) => {
           setDisabledNext(true)
           setAnswer && setAnswer(selectedNumber)
         }}
-        className='btn btn-primary self-end my-5'
-        style={{ width: '70px' }}
+        className='next-button self-end'
         disabled={disabledNext}
       >
         Next

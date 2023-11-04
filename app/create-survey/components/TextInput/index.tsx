@@ -8,7 +8,7 @@ const TextInput = ({ setAnswer }: QuestionUiProps) => {
   const [text, setText] = useState<string>('')
 
   return (
-    <div className='flex flex-col'>
+    <div className='flex flex-col mx-2'>
       <input
         onChange={(e) => setText(e.target.value)}
         value={text}
@@ -22,8 +22,7 @@ const TextInput = ({ setAnswer }: QuestionUiProps) => {
           setDisabledNext(true)
           setAnswer && setAnswer(text)
         }}
-        className='btn btn-primary self-end my-5'
-        style={{ width: '70px' }}
+        className='next-button self-end'
         disabled={disabledNext}
       >
         Next

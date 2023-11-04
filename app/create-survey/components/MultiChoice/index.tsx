@@ -80,8 +80,7 @@ const MultiChoice = ({ choices, setChoices, setAnswer }: MultiChoiceProps) => {
           setDisabledNext(true)
           setAnswer && setAnswer(choices.filter((_, i) => checkboxStates[i]))
         }}
-        className='btn btn-primary ml-auto mr-5'
-        style={{ width: '70px' }}
+        className='next-button self-end mr-8 md:mr-5'
         disabled={disabledNext}
       >
         Next
