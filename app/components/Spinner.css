@@ -1,49 +1,46 @@
 .spinner {
-    display: inline-block;
-    position: relative;
-    width: 300px;
-    height: 300px;
+  display: inline-block;
+  position: relative;
+  @apply w-[150px] h-[150px];
 }
 
 .border {
-    box-sizing: border-box;
-    display: block;
-    position: absolute;
-    width: 300px;
-    height: 300px;
-    /* margin: 20px; */
-    border: 8px solid #3498db;
-    border-radius: 50%;
-    animation: spin 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
-    border-color: #3498db transparent transparent transparent;
+  display: block;
+  position: absolute;
+  border-radius: 50%;
+  box-sizing: border-box;
+  @apply border-2;
+  @apply w-[150px] h-[150px];
+  animation: spin 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+  border-color: #3498db transparent transparent transparent;
 }
 
 @keyframes spin {
-    0% {
-        transform: rotate(0deg);
-    }
+  0% {
+    transform: rotate(0deg);
+  }
 
-    25% {
-        transform: rotate(90deg);
-    }
+  25% {
+    transform: rotate(90deg);
+  }
 
-    50% {
-        transform: rotate(180deg);
-    }
+  50% {
+    transform: rotate(180deg);
+  }
 
-    75% {
-        transform: rotate(270deg);
-    }
+  75% {
+    transform: rotate(270deg);
+  }
 
-    100% {
-        transform: rotate(360deg);
-    }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 .image-container {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 1;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
 }
