@@ -31,7 +31,7 @@ const AnswerForm = ({ submitSurvey }: { submitSurvey: Function }) => {
   }
 
   return (
-    <form className='flex flex-col justify-center items-center gap-y-10 fixed lg:static'>
+    <form className='flex flex-col justify-center items-center gap-y-10 fixed lg:static w-screen'>
       {questions.map((question, index) => (
         <main
           key={index}

@@ -16,7 +16,7 @@ const FiveStarRating = ({ setAnswer }: QuestionUiProps) => {
 
   return (
     <div className='container flex justify-center w-full'>
-      <div className='star-rating flex gap-x-5'>
+      <div className='star-rating flex gap-x-2 sm:gap-x-3 md:gap-x-4'>
         {Array.from({ length: 5 }).map((_, index) => (
           <button
             key={index}
@@ -27,7 +27,9 @@ const FiveStarRating = ({ setAnswer }: QuestionUiProps) => {
             }}
           >
             <BsStarFill
-              className={`text-5xl cursor-pointer ${rating && rating > index ? 'text-orange-400' : 'text-white'}`}
+              className={`text-2xl sm:text-4xl md:text-5xl cursor-pointer ${
+                rating && rating > index ? 'text-orange-400' : 'text-white'
+              }`}
             />
           </button>
         ))}
