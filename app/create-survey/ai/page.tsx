@@ -56,7 +56,7 @@ const GenerateWithAi = () => {
 
   return (
     <form className='h-screen flex flex-col items-center justify-center gap-y-4' onSubmit={generateUsingAi}>
-      <label htmlFor='survey-description' className='text-2xl'>
+      <label htmlFor='survey-description' className='text-2xl text-white'>
         Enter survey topic or description
       </label>
       <textarea
