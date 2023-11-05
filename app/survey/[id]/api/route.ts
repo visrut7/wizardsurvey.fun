@@ -26,7 +26,7 @@ export async function POST(request: Request) {
     const is_response_filled = await db.collection(id).findOne({ ip })
     if (is_response_filled) {
       return NextResponse.json(
-        { error: 'We already got response from your IP.' },
+        { error: 'You have already filled survey response once.' },
         { status: StatusCodes.UNPROCESSABLE_ENTITY }
       )
     }

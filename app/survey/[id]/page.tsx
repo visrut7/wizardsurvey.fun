@@ -6,6 +6,7 @@ import { useAppContext } from '@/app/context/AppContext'
 import { Answer, QuestionType } from '@/app/models/types'
 import { StatusCodes } from 'http-status-codes'
 import { useRouter, usePathname } from 'next/navigation'
+import Link from 'next/link'
 
 export default function FillSurvey({ params }: { params: { id: string } }) {
   const { setName, setQuestions, questions, name, currentQuestionNumber } = useAppContext()
@@ -55,7 +56,14 @@ export default function FillSurvey({ params }: { params: { id: string } }) {
       </nav>
       <section className='flex flex-col justify-center items-center h-full'>
         {!error && <AnswerForm submitSurvey={submitSurvey} />}
-        {error && <h1 className='text-3xl text-red-400'>{error}</h1>}
+        {error && (
+          <div className='flex flex-col gap-y-5 justify-center items-center'>
+            <h1 className='text-3xl'>{error}</h1>
+            <Link className='btn btn-success' href={`${pathname}/results`}>
+              Check Results!
+            </Link>
+          </div>
+        )}
       </section>
       <progress
         className='progress progress-success w-full'
