@@ -1,11 +1,9 @@
 .btn-hide {
-    @apply opacity-0 cursor-default;
+  @apply opacity-0 cursor-default;
 }
 
 p,
 span,
-div,
-input,
 button {
-    @apply text-white;
+  @apply text-white;
 }
