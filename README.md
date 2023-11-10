@@ -19,7 +19,8 @@ To contribute to this project, please follow these steps:
 ### Setup
 
 - **Docker**: If you haven't already, install Docker to manage containers.
-- Run `npm run setup` to install all the dependencies and start mongodb container.
+- Run `docker run --name wizardsurvey-dev -d -p 27017:27017 mongo:latest`
+- Create `.env.development.local` from `.env.example`
 - Run `npm run dev` to start the development server.
 - Run `npm run test` to run the tests.
 - If you want to see database state, you can run `npm run db-ui`

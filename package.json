@@ -10,7 +10,6 @@
     "screenshot": "ts-node scripts/screenshot.ts",
     "test": "jest --watch",
     "test:ci": "jest --ci",
-    "setup": "npm i && ts-node scripts/setup.ts",
     "db-ui": "npx mongoku start"
   },
   "dependencies": {
