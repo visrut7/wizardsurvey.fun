@@ -13,9 +13,9 @@ const FeedbackEmoji = ({ setAnswer }: QuestionUiProps) => {
 
   return (
     <div className='feedback-emoji'>
-      {emojis.map((emoji, index) => (
+      {emojis.map((emoji) => (
         <button
-          key={index}
+          key={emoji}
           className={`emoji ${selectedEmoji === emoji ? 'selected' : ''}`}
           onClick={() => handleEmojiClick(emoji)}
         >

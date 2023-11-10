@@ -1,4 +1,4 @@
-import { render, screen, waitFor } from '@testing-library/react'
+import { render, screen } from '@testing-library/react'
 import FillSurvey from '@/app/survey/[id]/page'
 import { QuestionType } from '@/app/models/types'
 import React from 'react'
