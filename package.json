@@ -21,7 +21,7 @@
     "eslint-config-next": "13.5.4",
     "mongodb": "^5.9.0",
     "next": "13.5.4",
-    "openai": "^4.12.1",
+    "openai": "^4.12.4",
     "postcss": "8.4.31",
     "react": "18.2.0",
     "react-csv-downloader": "^3.0.0",
